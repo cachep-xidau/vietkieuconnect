@@ -5,8 +5,11 @@ import { Link } from "@/i18n/routing";
 import { usePathname } from "next/navigation";
 import { useTranslations, useLocale } from "next-intl";
 import { Menu, X } from "lucide-react";
+import { type User } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { LanguageToggle } from "./language-toggle";
+import { UserMenu } from "./user-menu";
+import { createClient } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -16,6 +19,7 @@ export function Header() {
   const locale = useLocale();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +27,22 @@ export function Header() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const supabase = createClient();
+
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      setUser(user);
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
   const navLinks = [
@@ -77,9 +97,13 @@ export function Header() {
         {/* Desktop Actions */}
         <div className="hidden items-center gap-3 md:flex">
           <LanguageToggle />
-          <Button asChild size="sm">
-            <Link href="/login">{tCommon("signIn")}</Link>
-          </Button>
+          {user ? (
+            <UserMenu user={user} />
+          ) : (
+            <Button asChild size="sm">
+              <Link href="/login">{tCommon("signIn")}</Link>
+            </Button>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
@@ -117,9 +141,13 @@ export function Header() {
             ))}
             <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
               <LanguageToggle />
-              <Button asChild size="sm">
-                <Link href="/login">{tCommon("signIn")}</Link>
-              </Button>
+              {user ? (
+                <UserMenu user={user} />
+              ) : (
+                <Button asChild size="sm">
+                  <Link href="/login">{tCommon("signIn")}</Link>
+                </Button>
+              )}
             </div>
           </nav>
         </div>
