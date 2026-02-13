@@ -40,6 +40,7 @@
       "title": "Nha Khoa Chất Lượng tại Việt Nam\nTiết kiệm 60-80%",
       "subtitle": "Kết nối với phòng khám uy tín, nhận báo giá minh bạch, du lịch yên tâm. Được hàng ngàn Việt Kiều tin tưởng.",
       "cta": "Tư Vấn Miễn Phí",
+      "ctaLoggedIn": "Tư Vấn Mới",
       "ctaSecondary": "Cách Hoạt Động"
     },
     "stats": {
@@ -275,6 +276,9 @@
     "browseClinics": "Xem Phòng Khám",
     "viewAllBookings": "Xem Tất Cả Lịch Hẹn",
     "viewProfile": "Xem Hồ Sơ",
+    "myConsultations": "Tra Cứu Tư Vấn",
+    "myBookings": "Lịch Hẹn",
+    "manageAccount": "Quản lý tài khoản",
     "matchScore": "Phù hợp {score}%",
     "reviews": "{count} đánh giá",
     "youSave": "Bạn tiết kiệm",

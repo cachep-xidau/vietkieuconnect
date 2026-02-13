@@ -11,6 +11,8 @@ import { Link } from "@/i18n/routing";
 import { AnimatedStatsGrid } from "@/components/dashboard/animated-stats-grid";
 import { Timeline } from "@/components/dashboard/timeline";
 import { ClinicRecommendationCard, TreatmentRecommendationCard } from "@/components/dashboard/recommendation-card";
+import { QuickActions } from "@/components/dashboard/quick-actions";
+import { FabConsultation } from "@/components/dashboard/fab-consultation";
 import { mockDashboardStats, mockActivities, mockRecommendations } from "@/lib/mock-data/dashboard";
 
 export default async function DashboardPage() {
@@ -50,10 +52,21 @@ export default async function DashboardPage() {
         <p className="text-muted-foreground text-lg">
           {t("dashboard.subtitle")}
         </p>
+        <div className="pt-4">
+          <Button asChild size="lg">
+            <Link href="/consultation/new">
+              <Plus className="mr-2 h-5 w-5" />
+              {t("dashboard.newConsultation")}
+            </Link>
+          </Button>
+        </div>
       </div>
 
       {/* Stats Grid with animations */}
       <AnimatedStatsGrid stats={mockDashboardStats} />
+
+      {/* Quick Actions */}
+      <QuickActions />
 
       {/* Timeline + Recommendations Grid */}
       <div className="grid lg:grid-cols-5 gap-6">
@@ -96,6 +109,9 @@ export default async function DashboardPage() {
           </div>
         </div>
       </div>
+
+      {/* FAB - Desktop Only */}
+      <FabConsultation />
     </div>
   );
 }

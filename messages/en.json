@@ -40,6 +40,7 @@
       "title": "Quality Dental Care in Vietnam\nat 60-80% Lower Cost",
       "subtitle": "Connect with verified clinics, get transparent quotes, and travel with confidence. Trusted by thousands of Việt Kiều.",
       "cta": "Start Free Consultation",
+      "ctaLoggedIn": "New Consultation",
       "ctaSecondary": "How It Works"
     },
     "stats": {
@@ -275,6 +276,9 @@
     "browseClinics": "Browse Clinics",
     "viewAllBookings": "View All Bookings",
     "viewProfile": "View Profile",
+    "myConsultations": "My Consultations",
+    "myBookings": "My Bookings",
+    "manageAccount": "Manage your account",
     "matchScore": "{score}% match",
     "reviews": "{count} reviews",
     "youSave": "You save",

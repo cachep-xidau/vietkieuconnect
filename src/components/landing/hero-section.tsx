@@ -1,12 +1,26 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
+import { createClient } from "@/lib/supabase/client";
 
 export function HeroSection() {
   const t = useTranslations("landing.hero");
   const tStats = useTranslations("landing.stats");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const checkAuth = async () => {
+      const supabase = createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      setIsLoggedIn(!!user);
+    };
+    checkAuth();
+  }, []);
 
   const stats = [
     { label: tStats("savings"), value: tStats("savingsValue") },
@@ -32,7 +46,9 @@ export function HeroSection() {
           {/* CTAs */}
           <div className="mb-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button asChild size="lg" className="w-full sm:w-auto">
-              <Link href="/consultation">{t("cta")}</Link>
+              <Link href="/consultation/new">
+                {!mounted ? t("cta") : isLoggedIn ? t("ctaLoggedIn") : t("cta")}
+              </Link>
             </Button>
             <Button
               asChild
