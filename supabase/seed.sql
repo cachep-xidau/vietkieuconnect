@@ -1,0 +1,102 @@
+-- Seed data for VietKieuConnect
+
+-- Sample Clinics in Hanoi
+INSERT INTO clinics (slug, name, description_en, description_vi, address, city, services, pricing, rating, review_count, photos, logo_url, phone, email, website, verified, active) VALUES
+(
+  'hanoi-smile-dental',
+  'Hanoi Smile Dental Center',
+  'Premium dental care in the heart of Hanoi. Specializing in cosmetic dentistry, implants, and orthodontics with English-speaking staff.',
+  'Nha khoa cao cấp tại trung tâm Hà Nội. Chuyên về nha khoa thẩm mỹ, cấy ghép implant và chỉnh nha với đội ngũ nói tiếng Anh.',
+  '45 Tran Hung Dao, Hoan Kiem',
+  'Hanoi',
+  '["implants", "veneers", "braces", "cleaning", "whitening", "root_canal"]'::jsonb,
+  '{"implant_usd": 800, "implant_vnd": 20000000, "veneer_usd": 250, "veneer_vnd": 6250000, "braces_usd": 1200, "braces_vnd": 30000000}'::jsonb,
+  4.8,
+  142,
+  ARRAY['https://images.unsplash.com/photo-1629909615957-be38c5f6e8d9', 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95'],
+  'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=100',
+  '+84 24 3825 6789',
+  'info@hanoismile.vn',
+  'https://hanoismile.vn',
+  true,
+  true
+),
+(
+  'vietnam-international-dental',
+  'Vietnam International Dental Clinic',
+  'International-standard dental clinic serving expats and overseas Vietnamese. Full range of treatments with German equipment.',
+  'Phòng khám nha khoa tiêu chuẩn quốc tế phục vụ người nước ngoài và Việt kiều. Đầy đủ các dịch vụ với thiết bị Đức.',
+  '12 Nguyen Thi Minh Khai, Hai Ba Trung',
+  'Hanoi',
+  '["implants", "veneers", "braces", "cleaning", "whitening", "crowns", "surgery"]'::jsonb,
+  '{"implant_usd": 900, "implant_vnd": 22500000, "veneer_usd": 280, "veneer_vnd": 7000000, "braces_usd": 1500, "braces_vnd": 37500000}'::jsonb,
+  4.9,
+  218,
+  ARRAY['https://images.unsplash.com/photo-1588776814546-1ffcf47267a5', 'https://images.unsplash.com/photo-1629909615184-74f495363b67'],
+  'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=100',
+  '+84 24 3943 1234',
+  'contact@vidclinic.com',
+  'https://vidclinic.com',
+  true,
+  true
+);
+
+-- Sample Clinics in Ho Chi Minh City
+INSERT INTO clinics (slug, name, description_en, description_vi, address, city, services, pricing, rating, review_count, photos, logo_url, phone, email, website, verified, active) VALUES
+(
+  'saigon-perfect-smile',
+  'Saigon Perfect Smile',
+  'Leading cosmetic dentistry clinic in District 1. Specializing in smile makeovers, porcelain veneers, and invisible braces.',
+  'Nha khoa thẩm mỹ hàng đầu tại Quận 1. Chuyên về làm đẹp nụ cười, veneer sứ và niềng răng trong suốt.',
+  '89 Nguyen Hue, District 1',
+  'Ho Chi Minh City',
+  '["veneers", "braces", "whitening", "implants", "cleaning", "bonding"]'::jsonb,
+  '{"implant_usd": 750, "implant_vnd": 18750000, "veneer_usd": 220, "veneer_vnd": 5500000, "braces_usd": 1100, "braces_vnd": 27500000}'::jsonb,
+  4.7,
+  189,
+  ARRAY['https://images.unsplash.com/photo-1606811841689-23dfddce3e95', 'https://images.unsplash.com/photo-1629909613654-28e377c37b09'],
+  'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=100',
+  '+84 28 3822 4567',
+  'hello@saigonsmile.vn',
+  'https://saigonsmile.vn',
+  true,
+  true
+),
+(
+  'diamond-dental-hcmc',
+  'Diamond Dental Clinic',
+  'Modern dental clinic with Japanese technology. Comprehensive dental services for the whole family at affordable prices.',
+  'Nha khoa hiện đại với công nghệ Nhật Bản. Dịch vụ nha khoa toàn diện cho cả gia đình với giá cả phải chăng.',
+  '234 Le Lai, District 1',
+  'Ho Chi Minh City',
+  '["implants", "veneers", "braces", "cleaning", "whitening", "root_canal", "pediatric"]'::jsonb,
+  '{"implant_usd": 700, "implant_vnd": 17500000, "veneer_usd": 200, "veneer_vnd": 5000000, "braces_usd": 1000, "braces_vnd": 25000000}'::jsonb,
+  4.6,
+  156,
+  ARRAY['https://images.unsplash.com/photo-1629909615184-74f495363b67', 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5'],
+  'https://images.unsplash.com/photo-1629909615184-74f495363b67?w=100',
+  '+84 28 3925 8888',
+  'info@diamonddental.vn',
+  'https://diamonddental.vn',
+  true,
+  true
+),
+(
+  'elite-dental-saigon',
+  'Elite Dental Saigon',
+  'VIP dental clinic in District 3 offering luxury dental tourism packages. Private treatment rooms and concierge service.',
+  'Nha khoa VIP tại Quận 3 cung cấp gói du lịch nha khoa cao cấp. Phòng điều trị riêng và dịch vụ hỗ trợ cá nhân.',
+  '56 Vo Van Tan, District 3',
+  'Ho Chi Minh City',
+  '["implants", "veneers", "braces", "whitening", "full_mouth", "sedation"]'::jsonb,
+  '{"implant_usd": 1000, "implant_vnd": 25000000, "veneer_usd": 300, "veneer_vnd": 7500000, "braces_usd": 1800, "braces_vnd": 45000000}'::jsonb,
+  4.9,
+  97,
+  ARRAY['https://images.unsplash.com/photo-1629909615957-be38c5f6e8d9', 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95'],
+  'https://images.unsplash.com/photo-1629909615957-be38c5f6e8d9?w=100',
+  '+84 28 3930 7777',
+  'vip@elitedental.vn',
+  'https://elitedental.vn',
+  true,
+  true
+);

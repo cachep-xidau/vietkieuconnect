@@ -1,0 +1,122 @@
+export interface ClinicTable {
+  Row: {
+    id: string;
+    slug: string;
+    name: string;
+    description_en: string | null;
+    description_vi: string | null;
+    address: string;
+    city: string;
+    services: unknown;
+    pricing: unknown;
+    rating: number;
+    review_count: number;
+    photos: string[];
+    logo_url: string | null;
+    phone: string | null;
+    email: string | null;
+    website: string | null;
+    verified: boolean;
+    active: boolean;
+    created_at: string;
+    updated_at: string;
+  };
+  Insert: {
+    id?: string;
+    slug: string;
+    name: string;
+    description_en?: string | null;
+    description_vi?: string | null;
+    address: string;
+    city: string;
+    services?: unknown;
+    pricing?: unknown;
+    rating?: number;
+    review_count?: number;
+    photos?: string[];
+    logo_url?: string | null;
+    phone?: string | null;
+    email?: string | null;
+    website?: string | null;
+    verified?: boolean;
+    active?: boolean;
+    created_at?: string;
+    updated_at?: string;
+  };
+  Update: {
+    id?: string;
+    slug?: string;
+    name?: string;
+    description_en?: string | null;
+    description_vi?: string | null;
+    address?: string;
+    city?: string;
+    services?: unknown;
+    pricing?: unknown;
+    rating?: number;
+    review_count?: number;
+    photos?: string[];
+    logo_url?: string | null;
+    phone?: string | null;
+    email?: string | null;
+    website?: string | null;
+    verified?: boolean;
+    active?: boolean;
+    created_at?: string;
+    updated_at?: string;
+  };
+}
+
+export interface ReviewTable {
+  Row: {
+    id: string;
+    user_id: string;
+    clinic_id: string;
+    booking_id: string | null;
+    rating: number;
+    title: string;
+    content: string;
+    treatment_type: string | null;
+    photos: string[];
+    status: "pending" | "approved" | "flagged" | "removed";
+    flagged: boolean;
+    flagged_at: string | null;
+    flagged_by: string | null;
+    flag_reason: string | null;
+    created_at: string;
+  };
+  Insert: {
+    id?: string;
+    user_id: string;
+    clinic_id: string;
+    booking_id?: string | null;
+    rating: number;
+    title: string;
+    content: string;
+    treatment_type?: string | null;
+    photos?: string[];
+    status?: "pending" | "approved" | "flagged" | "removed";
+    flagged?: boolean;
+    flagged_at?: string | null;
+    flagged_by?: string | null;
+    flag_reason?: string | null;
+    created_at?: string;
+  };
+  Update: {
+    id?: string;
+    user_id?: string;
+    clinic_id?: string;
+    booking_id?: string | null;
+    rating?: number;
+    title?: string;
+    content?: string;
+    treatment_type?: string | null;
+    photos?: string[];
+    status?: "pending" | "approved" | "flagged" | "removed";
+    flagged?: boolean;
+    flagged_at?: string | null;
+    flagged_by?: string | null;
+    flag_reason?: string | null;
+    created_at?: string;
+  };
+}
