@@ -26,7 +26,7 @@ export async function signIn(data: LoginInput): Promise<ActionResult<null>> {
     };
   }
 
-  redirect("/en");
+  redirect("/dashboard");
 }
 
 export async function signUp(
@@ -52,7 +52,7 @@ export async function signUp(
     };
   }
 
-  redirect("/en");
+  redirect("/dashboard");
 }
 
 export async function signInWithGoogle(): Promise<
@@ -94,7 +94,7 @@ export async function signOut(): Promise<ActionResult<null>> {
     };
   }
 
-  redirect("/en");
+  redirect("/dashboard");
 }
 
 export async function resetPassword(

@@ -52,14 +52,6 @@ export default async function DashboardPage() {
         <p className="text-muted-foreground text-lg">
           {t("dashboard.subtitle")}
         </p>
-        <div className="pt-4">
-          <Button asChild size="lg">
-            <Link href="/consultation/new">
-              <Plus className="mr-2 h-5 w-5" />
-              {t("dashboard.newConsultation")}
-            </Link>
-          </Button>
-        </div>
       </div>
 
       {/* Stats Grid with animations */}
