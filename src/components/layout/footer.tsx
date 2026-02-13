@@ -72,7 +72,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/consultation"
+                  href="/consultations"
                   className="text-sm text-text-secondary transition-colors hover:text-primary"
                 >
                   {t("freeConsultation")}

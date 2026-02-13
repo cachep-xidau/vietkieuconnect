@@ -44,7 +44,7 @@ export default async function ConsultationDetailPage({ params }: ConsultationDet
         <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
           <a href="/dashboard" className="hover:text-foreground">Dashboard</a>
           <span>/</span>
-          <a href="/consultation" className="hover:text-foreground">Consultations</a>
+          <a href="/consultations" className="hover:text-foreground">Consultations</a>
           <span>/</span>
           <span className="text-foreground">Details</span>
         </nav>

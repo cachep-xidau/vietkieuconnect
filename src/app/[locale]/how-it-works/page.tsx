@@ -127,7 +127,7 @@ export default function HowItWorksPage() {
               {t("ctaSubtitle")}
             </p>
             <Button asChild size="lg" variant="secondary" className="w-full sm:w-auto">
-              <Link href="/consultation">{tHero("cta")}</Link>
+              <Link href="/consultation/new">{tHero("cta")}</Link>
             </Button>
           </div>
         </div>

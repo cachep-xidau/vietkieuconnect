@@ -27,7 +27,7 @@ export function FinalCtaSection() {
             size="lg"
             className="bg-white text-primary hover:bg-white/90"
           >
-            <Link href="/consultation">{t("button")}</Link>
+            <Link href="/consultation/new">{t("button")}</Link>
           </Button>
         </div>
       </div>
