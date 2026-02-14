@@ -5,13 +5,25 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { useTranslations } from "next-intl";
 import { ConsultationRequestInput } from "@/lib/validators/consultation";
+import { Star, CheckCircle2, MapPin } from "lucide-react";
+import type { ClinicTable } from "@/types/database-clinic-tables";
+import Image from "next/image";
 
 interface ConsultationStepTreatmentProps {
   register: UseFormRegister<ConsultationRequestInput>;
   errors: FieldErrors<ConsultationRequestInput>;
+  clinics: ClinicTable["Row"][];
+  selectedClinicId?: string;
+  onClinicSelect: (id: string | undefined) => void;
 }
 
-export function ConsultationStepTreatment({ register, errors }: ConsultationStepTreatmentProps) {
+export function ConsultationStepTreatment({
+  register,
+  errors,
+  clinics,
+  selectedClinicId,
+  onClinicSelect,
+}: ConsultationStepTreatmentProps) {
   const t = useTranslations();
 
   return (
@@ -50,6 +62,80 @@ export function ConsultationStepTreatment({ register, errors }: ConsultationStep
           <p className="text-sm text-destructive">{errors.patientCount.message}</p>
         )}
       </div>
+
+      {/* Clinic Preference Section */}
+      {clinics.length > 0 && (
+        <div className="space-y-3">
+          <Label className="text-base font-medium">
+            {t("consultation.clinicPreference")}
+          </Label>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {clinics.slice(0, 6).map((clinic) => {
+              const isSelected = selectedClinicId === clinic.id;
+              return (
+                <button
+                  key={clinic.id}
+                  type="button"
+                  onClick={() => onClinicSelect(isSelected ? undefined : clinic.id)}
+                  className={`
+                    relative flex items-start gap-3 p-3 rounded-lg border-2 text-left transition-all duration-200
+                    ${isSelected
+                      ? "border-primary bg-primary/5 ring-1 ring-primary/20"
+                      : "border-border hover:border-primary/40 hover:bg-accent/50"
+                    }
+                  `}
+                >
+                  {/* Clinic logo/avatar */}
+                  <div className="flex-shrink-0">
+                    {clinic.logo_url ? (
+                      <Image
+                        src={clinic.logo_url}
+                        alt={clinic.name}
+                        width={40}
+                        height={40}
+                        className="rounded-lg object-cover"
+                      />
+                    ) : (
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center text-sm font-semibold text-primary">
+                        {clinic.name.charAt(0)}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Clinic info */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-1.5">
+                      <span className="font-medium text-sm truncate">{clinic.name}</span>
+                      {clinic.verified && (
+                        <CheckCircle2 className="h-3.5 w-3.5 text-green-500 flex-shrink-0" />
+                      )}
+                    </div>
+                    <div className="flex items-center gap-2 mt-0.5">
+                      <div className="flex items-center gap-0.5">
+                        <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                        <span className="text-xs text-muted-foreground">{clinic.rating.toFixed(1)}</span>
+                      </div>
+                      {clinic.city && (
+                        <div className="flex items-center gap-0.5">
+                          <MapPin className="h-3 w-3 text-muted-foreground" />
+                          <span className="text-xs text-muted-foreground">{clinic.city}</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Selection indicator */}
+                  {isSelected && (
+                    <div className="absolute top-2 right-2">
+                      <CheckCircle2 className="h-5 w-5 text-primary" />
+                    </div>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

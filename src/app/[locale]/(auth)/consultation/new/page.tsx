@@ -1,8 +1,11 @@
 import { ConsultationWizard } from "@/components/booking/consultation-wizard";
 import { getTranslations } from "next-intl/server";
+import { getClinics } from "@/lib/actions/clinic-actions";
 
 export default async function NewConsultationPage() {
   const t = await getTranslations();
+  const clinicsResult = await getClinics();
+  const clinics = clinicsResult.success ? clinicsResult.data : [];
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -16,7 +19,7 @@ export default async function NewConsultationPage() {
         <p className="text-muted-foreground mt-2">{t("consultation.description")}</p>
       </div>
 
-      <ConsultationWizard />
+      <ConsultationWizard clinics={clinics} />
     </div>
   );
 }

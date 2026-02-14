@@ -16,10 +16,15 @@ import { submitConsultation, uploadConsultationImage } from "@/lib/actions/consu
 import { consultationRequestSchema, ConsultationRequestInput } from "@/lib/validators/consultation";
 import { CheckCircle2, ArrowLeft, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
+import type { ClinicTable } from "@/types/database-clinic-tables";
 
 const STEPS = 3;
 
-export function ConsultationWizard() {
+interface ConsultationWizardProps {
+  clinics: ClinicTable["Row"][];
+}
+
+export function ConsultationWizard({ clinics }: ConsultationWizardProps) {
   const t = useTranslations();
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
@@ -154,7 +159,13 @@ export function ConsultationWizard() {
 
       <CardContent className="space-y-6">
         {currentStep === 1 && (
-          <ConsultationStepTreatment register={register} errors={errors} />
+          <ConsultationStepTreatment
+            register={register}
+            errors={errors}
+            clinics={clinics}
+            selectedClinicId={formData.clinicId}
+            onClinicSelect={(id) => setValue("clinicId", id)}
+          />
         )}
 
         {currentStep === 2 && (
