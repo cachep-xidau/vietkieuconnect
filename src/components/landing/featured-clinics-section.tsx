@@ -58,6 +58,11 @@ export function FeaturedClinicsSection() {
               key={clinic.id}
               className="overflow-hidden border-border bg-bg-card transition-shadow hover:shadow-lg"
             >
+              {/* Placeholder Image Area */}
+              <div className="flex h-48 w-full items-center justify-center bg-gradient-to-br from-primary/10 to-primary/5">
+                <MapPin className="h-12 w-12 text-primary/20" />
+              </div>
+
               <CardContent className="p-6">
                 {/* Clinic Name */}
                 <h3 className="mb-2 text-xl font-semibold text-text-primary">

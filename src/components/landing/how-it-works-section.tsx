@@ -41,14 +41,14 @@ export function HowItWorksSection() {
           </p>
         </div>
 
-        {/* Steps Grid */}
-        <div className="grid gap-8 md:grid-cols-3">
+        {/* Steps Grid/Scroll */}
+        <div className="flex gap-4 overflow-x-auto pb-6 md:grid md:gap-8 md:grid-cols-3 md:pb-0 snap-x snap-mandatory">
           {steps.map((step) => {
             const Icon = step.icon;
             return (
               <Card
                 key={step.number}
-                className="relative overflow-hidden border-border bg-bg-card transition-shadow hover:shadow-md"
+                className="min-w-[280px] snap-center relative overflow-hidden border-border bg-bg-card transition-shadow hover:shadow-md md:min-w-0"
               >
                 <CardContent className="p-6">
                   {/* Step Number Badge */}

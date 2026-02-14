@@ -65,7 +65,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/clinics"
-                  className="text-sm text-text-secondary transition-colors hover:text-primary"
+                  className="text-sm text-stone-600 transition-colors hover:text-primary"
                 >
                   {t("clinicDirectory")}
                 </Link>
@@ -73,7 +73,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/consultations"
-                  className="text-sm text-text-secondary transition-colors hover:text-primary"
+                  className="text-sm text-stone-600 transition-colors hover:text-primary"
                 >
                   {t("freeConsultation")}
                 </Link>
@@ -81,7 +81,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/calculator"
-                  className="text-sm text-text-secondary transition-colors hover:text-primary"
+                  className="text-sm text-stone-600 transition-colors hover:text-primary"
                 >
                   {t("costCalculator")}
                 </Link>
@@ -98,7 +98,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/how-it-works"
-                  className="text-sm text-text-secondary transition-colors hover:text-primary"
+                  className="text-sm text-stone-600 transition-colors hover:text-primary"
                 >
                   {t("howItWorks")}
                 </Link>
@@ -106,7 +106,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/guide"
-                  className="text-sm text-text-secondary transition-colors hover:text-primary"
+                  className="text-sm text-stone-600 transition-colors hover:text-primary"
                 >
                   {t("dentalGuide")}
                 </Link>
@@ -114,7 +114,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/faq"
-                  className="text-sm text-text-secondary transition-colors hover:text-primary"
+                  className="text-sm text-stone-600 transition-colors hover:text-primary"
                 >
                   {t("faq")}
                 </Link>
@@ -131,7 +131,7 @@ export function Footer() {
               <li>
                 <a
                   href="mailto:support@vietkieuconnect.com"
-                  className="text-sm text-text-secondary transition-colors hover:text-primary"
+                  className="text-sm text-stone-600 transition-colors hover:text-primary"
                 >
                   {t("email")}
                 </a>
@@ -139,7 +139,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/support"
-                  className="text-sm text-text-secondary transition-colors hover:text-primary"
+                  className="text-sm text-stone-600 transition-colors hover:text-primary"
                 >
                   {t("support")}
                 </Link>

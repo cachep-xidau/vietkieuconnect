@@ -30,7 +30,7 @@ export function HeroSection() {
   ];
 
   return (
-    <section className="relative bg-gradient-to-br from-primary/5 via-primary/3 to-transparent">
+    <section className="relative bg-gradient-to-br from-primary/2 via-primary/1 to-transparent md:from-primary/5 md:via-primary/3">
       <div className="container mx-auto px-4 py-16 md:py-24">
         <div className="mx-auto max-w-4xl text-center">
           {/* Headline */}
@@ -54,7 +54,7 @@ export function HeroSection() {
               asChild
               variant="outline"
               size="lg"
-              className="w-full sm:w-auto"
+              className="w-full border-stone-300 text-stone-700 hover:bg-stone-50 sm:w-auto"
             >
               <Link href="/how-it-works">{t("ctaSecondary")}</Link>
             </Button>
