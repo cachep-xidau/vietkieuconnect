@@ -236,9 +236,10 @@ export async function deleteConsultation(
       return { success: false, error: "Can only delete pending consultations" };
     }
 
+    // Hard delete — RLS allows DELETE for own rows but may block UPDATE
     const { error } = await (supabase
       .from("consultation_requests")
-      .update({ status: "cancelled" })
+      .delete()
       .eq("id", id)
       .eq("user_id", user.id) as any);
 
