@@ -104,12 +104,12 @@ export default async function ClinicProfilePage({
 
                 <div className="flex gap-3">
                   <Button asChild className="flex-1 md:flex-initial">
-                    <Link href={`/${locale}/consultation/new`}>
+                    <Link href="/consultation/new">
                       {t("requestConsultation")}
                     </Link>
                   </Button>
                   <Button variant="outline" asChild>
-                    <Link href={`/${locale}/clinics/${slug}/reviews`}>
+                    <Link href={`/clinics/${slug}/reviews`}>
                       {t("reviewsTitle")}
                     </Link>
                   </Button>
@@ -220,7 +220,7 @@ export default async function ClinicProfilePage({
                   {t("gallery")}
                 </h2>
                 <Button variant="outline" size="sm" asChild>
-                  <Link href={`/${locale}/clinics/${slug}/gallery`}>
+                  <Link href={`/clinics/${slug}/gallery`}>
                     {tCommon("viewAll")}
                   </Link>
                 </Button>

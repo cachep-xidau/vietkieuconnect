@@ -112,7 +112,7 @@ export default async function BookingDetailPage({ params }: BookingDetailPagePro
                 <p className="text-sm text-green-700 mb-4">
                   {tReview("shareExperience")}
                 </p>
-                <Link href={`/${locale}/bookings/${id}/review`}>
+                <Link href={`/bookings/${id}/review`}>
                   <Button className="w-full bg-green-600 hover:bg-green-700">
                     {tReview("writeReviewButton")}
                   </Button>

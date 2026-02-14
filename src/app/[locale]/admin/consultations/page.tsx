@@ -73,7 +73,7 @@ export default async function ConsultationsPage({ params, searchParams }: PagePr
             {page > 1 && (
               <Button asChild variant="outline" size="sm">
                 <Link
-                  href={`/${locale}/admin/consultations?${new URLSearchParams({
+                  href={`/admin/consultations?${new URLSearchParams({
                     ...(status !== "all" && { status }),
                     ...(search && { search }),
                     page: String(page - 1),
@@ -87,7 +87,7 @@ export default async function ConsultationsPage({ params, searchParams }: PagePr
             {page < totalPages && (
               <Button asChild variant="outline" size="sm">
                 <Link
-                  href={`/${locale}/admin/consultations?${new URLSearchParams({
+                  href={`/admin/consultations?${new URLSearchParams({
                     ...(status !== "all" && { status }),
                     ...(search && { search }),
                     page: String(page + 1),

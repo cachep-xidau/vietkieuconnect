@@ -36,7 +36,7 @@ export default async function BookingDetailPage({ params }: PageProps) {
     <div className="space-y-6">
       <div className="flex items-center gap-4">
         <Button asChild variant="ghost" size="sm">
-          <Link href={`/${locale}/admin/bookings`}>
+          <Link href="/admin/bookings">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Bookings
           </Link>
@@ -185,7 +185,7 @@ export default async function BookingDetailPage({ params }: PageProps) {
           </CardHeader>
           <CardContent>
             <Button asChild variant="outline">
-              <Link href={`/${locale}/admin/consultations/${booking.consultation.id}`}>
+              <Link href={`/admin/consultations/${booking.consultation.id}`}>
                 View Original Consultation
               </Link>
             </Button>

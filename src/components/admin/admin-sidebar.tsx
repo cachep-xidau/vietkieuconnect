@@ -54,7 +54,7 @@ export function AdminSidebar({ locale }: AdminSidebarProps) {
     <div className="flex h-full flex-col gap-2">
       {/* Logo/Branding */}
       <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-        <Link href={`/${locale}/admin`} className="flex items-center gap-2 font-semibold">
+        <Link href="/admin" className="flex items-center gap-2 font-semibold">
           <LayoutDashboard className="h-6 w-6" />
           <span>VietKieu Admin</span>
         </Link>
@@ -64,8 +64,10 @@ export function AdminSidebar({ locale }: AdminSidebarProps) {
       <nav className="flex-1 px-2 lg:px-4">
         <div className="grid gap-1 py-2">
           {navItems.map((item) => {
-            const href = `/${locale}${item.href}`;
-            const isActive = pathname === href || (item.href !== "/admin" && pathname.startsWith(href));
+            const href = item.href;
+            // pathname includes locale prefix (e.g. /vi/admin), strip it for comparison
+            const strippedPathname = pathname.replace(`/${locale}`, '') || '/';
+            const isActive = strippedPathname === href || (item.href !== "/admin" && strippedPathname.startsWith(href));
 
             return (
               <Link

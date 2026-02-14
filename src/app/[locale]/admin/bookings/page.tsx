@@ -73,7 +73,7 @@ export default async function BookingsPage({ params, searchParams }: PageProps) 
             {page > 1 && (
               <Button asChild variant="outline" size="sm">
                 <Link
-                  href={`/${locale}/admin/bookings?${new URLSearchParams({
+                  href={`/admin/bookings?${new URLSearchParams({
                     ...(status !== "all" && { status }),
                     ...(search && { search }),
                     page: String(page - 1),
@@ -87,7 +87,7 @@ export default async function BookingsPage({ params, searchParams }: PageProps) 
             {page < totalPages && (
               <Button asChild variant="outline" size="sm">
                 <Link
-                  href={`/${locale}/admin/bookings?${new URLSearchParams({
+                  href={`/admin/bookings?${new URLSearchParams({
                     ...(status !== "all" && { status }),
                     ...(search && { search }),
                     page: String(page + 1),

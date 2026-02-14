@@ -56,7 +56,7 @@ export default async function ClinicsPage({ params, searchParams }: ClinicPagePr
           <p className="text-muted-foreground mt-2">{t("description")}</p>
         </div>
         <Button asChild>
-          <Link href={`/${locale}/admin/clinics/new`}>
+          <Link href="/admin/clinics/new">
             <Plus className="h-4 w-4 mr-2" />
             {t("createClinic")}
           </Link>

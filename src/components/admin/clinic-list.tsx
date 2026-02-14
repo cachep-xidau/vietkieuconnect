@@ -134,7 +134,7 @@ export function ClinicList({ clinics, locale }: ClinicListProps) {
                       size="sm"
                       asChild
                     >
-                      <Link href={`/${locale}/admin/clinics/${clinic.id}`}>
+                      <Link href={`/admin/clinics/${clinic.id}`}>
                         <Edit className="h-4 w-4 mr-1" />
                         {t("edit")}
                       </Link>

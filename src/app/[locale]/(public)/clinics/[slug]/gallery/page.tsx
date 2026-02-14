@@ -28,7 +28,7 @@ export default async function GalleryPage({ params }: GalleryPageProps) {
         <div className="space-y-6">
           <div>
             <Button variant="ghost" asChild className="mb-4">
-              <Link href={`/${locale}/clinics/${slug}`}>
+              <Link href={`/clinics/${slug}`}>
                 ← {tCommon("back")}
               </Link>
             </Button>

@@ -38,7 +38,7 @@ export default async function ComparePage({
               No clinics selected for comparison
             </p>
             <Button asChild>
-              <Link href={`/${locale}/clinics`}>Browse Clinics</Link>
+              <Link href="/clinics">Browse Clinics</Link>
             </Button>
           </Card>
         </div>
@@ -76,7 +76,7 @@ export default async function ComparePage({
                     >
                       <div className="space-y-2">
                         <Link
-                          href={`/${locale}/clinics/${clinic.slug}`}
+                          href={`/clinics/${clinic.slug}`}
                           className="hover:underline"
                         >
                           {clinic.name}
@@ -172,7 +172,7 @@ export default async function ComparePage({
 
           <div className="flex justify-center pt-4">
             <Button asChild variant="outline">
-              <Link href={`/${locale}/clinics`}>Browse More Clinics</Link>
+              <Link href="/clinics">Browse More Clinics</Link>
             </Button>
           </div>
         </div>

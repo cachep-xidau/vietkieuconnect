@@ -41,7 +41,7 @@ export default async function ConsultationDetailPage({ params }: PageProps) {
     <div className="space-y-6">
       <div className="flex items-center gap-4">
         <Button asChild variant="ghost" size="sm">
-          <Link href={`/${locale}/admin/consultations`}>
+          <Link href="/admin/consultations">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Consultations
           </Link>
