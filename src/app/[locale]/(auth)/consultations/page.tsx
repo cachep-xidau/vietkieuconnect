@@ -40,12 +40,15 @@ export default function ConsultationsPage() {
     setLoading(false);
   };
 
+  // Filter out declined (soft-deleted by user) consultations
+  const activeConsultations = consultations.filter((c) => c.status !== "declined");
+
   const filteredConsultations = activeTab === "all"
-    ? consultations
-    : consultations.filter((c) => c.status === activeTab);
+    ? activeConsultations
+    : activeConsultations.filter((c) => c.status === activeTab);
 
   const getStatusCount = (status: ConsultationStatus) =>
-    consultations.filter((c) => c.status === status).length;
+    activeConsultations.filter((c) => c.status === status).length;
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -74,7 +77,7 @@ export default function ConsultationsPage() {
       <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as typeof activeTab)}>
         <TabsList>
           <TabsTrigger value="all">
-            {t("common.viewAll")} ({consultations.length})
+            {t("common.viewAll")} ({activeConsultations.length})
           </TabsTrigger>
           <TabsTrigger value="pending">
             <Clock className="h-3 w-3 mr-1" />

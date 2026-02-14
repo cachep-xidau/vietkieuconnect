@@ -237,11 +237,12 @@ export async function deleteConsultation(
       return { success: false, error: "Can only delete pending consultations" };
     }
 
-    // Use admin client to bypass RLS for mutation (ownership already verified above)
+    // Soft-delete: set status to 'declined' (valid in DB CHECK constraint)
+    // DB constraint only allows: pending, quoted, accepted, declined, expired
     const adminClient = createAdminClient();
     const { error } = await (adminClient
       .from("consultation_requests")
-      .delete()
+      .update({ status: "declined" })
       .eq("id", id)
       .eq("user_id", user.id) as any);
 
