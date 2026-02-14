@@ -24,7 +24,7 @@ export function BottomTabBar() {
       isActive: pathname.includes("/clinics"),
     },
     {
-      href: "/consultation",
+      href: "/consultations",
       label: t("consult"),
       icon: MessageCircle,
       isActive: pathname.includes("/consultation"),

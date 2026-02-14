@@ -153,10 +153,10 @@ export default function ConsultationsPage() {
                           <span className="font-medium">{tConsultation("travelDates")}:</span>{" "}
                           {(() => {
                             try {
-                              const dates = typeof consultation.travel_dates === "string"
-                                ? JSON.parse(consultation.travel_dates)
-                                : consultation.travel_dates;
-                              return dates?.start || "Not specified";
+                              // Parse Postgres DATERANGE format: "[2026-03-01,2026-03-15)"
+                              const raw = String(consultation.travel_dates);
+                              const match = raw.match(/[\[(]([\d-]+),([\d-]+)[)\]]/);
+                              return match ? match[1] : "Not specified";
                             } catch {
                               return "Not specified";
                             }

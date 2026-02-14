@@ -20,7 +20,9 @@ export async function submitConsultation(
       user_id: user.id,
       treatment_description: data.treatmentDescription,
       patient_count: data.patientCount,
-      travel_dates: data.travelDates ? JSON.stringify(data.travelDates) : null,
+      travel_dates: data.travelDates?.start
+        ? `[${data.travelDates.start}, ${data.travelDates.end || data.travelDates.start}]`
+        : null,
       clinic_id: data.clinicId || null,
       status: "pending",
     };

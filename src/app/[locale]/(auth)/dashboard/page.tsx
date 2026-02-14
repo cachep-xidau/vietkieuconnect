@@ -13,7 +13,8 @@ import { Timeline } from "@/components/dashboard/timeline";
 import { ClinicRecommendationCard, TreatmentRecommendationCard } from "@/components/dashboard/recommendation-card";
 import { QuickActions } from "@/components/dashboard/quick-actions";
 import { FabConsultation } from "@/components/dashboard/fab-consultation";
-import { mockDashboardStats, mockActivities, mockRecommendations } from "@/lib/mock-data/dashboard";
+import { mockActivities, mockRecommendations } from "@/lib/mock-data/dashboard";
+import type { DashboardStats } from "@/lib/mock-data/dashboard-types";
 
 export default async function DashboardPage() {
   const t = await getTranslations();
@@ -42,6 +43,15 @@ export default async function DashboardPage() {
 
   const userName = profile?.full_name || user.email?.split("@")[0] || "User";
 
+  // Compute real dashboard stats
+  const realStats: DashboardStats = {
+    totalSaved: 0,
+    totalSavedTrend: "",
+    activeConsultations: activeConsultations.length,
+    bookings: upcomingBookings.length,
+    nextAppointment: null,
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Hero Section */}
@@ -55,7 +65,7 @@ export default async function DashboardPage() {
       </div>
 
       {/* Stats Grid with animations */}
-      <AnimatedStatsGrid stats={mockDashboardStats} />
+      <AnimatedStatsGrid stats={realStats} />
 
       {/* Quick Actions */}
       <QuickActions />

@@ -26,7 +26,7 @@ const actions: QuickAction[] = [
     color: "text-primary",
   },
   {
-    href: "/consultation",
+    href: "/consultations",
     labelKey: "myConsultations",
     descKey: "activeConsultations",
     icon: MessageSquareText,

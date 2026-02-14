@@ -104,7 +104,7 @@ export default async function ClinicProfilePage({
 
                 <div className="flex gap-3">
                   <Button asChild className="flex-1 md:flex-initial">
-                    <Link href={`/${locale}/consultation`}>
+                    <Link href={`/${locale}/consultation/new`}>
                       {t("requestConsultation")}
                     </Link>
                   </Button>
