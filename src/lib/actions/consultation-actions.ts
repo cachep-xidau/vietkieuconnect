@@ -164,16 +164,21 @@ export async function uploadConsultationImage(
     const fileExt = file.name.split(".").pop();
     const fileName = `${user.id}/${consultationId}/${Date.now()}.${fileExt}`;
 
+    // Convert File to Buffer for server-side upload compatibility
+    const arrayBuffer = await file.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+
     const { error: uploadError } = await supabase.storage
       .from("consultation-images")
-      .upload(fileName, file, {
+      .upload(fileName, buffer, {
         cacheControl: "3600",
         upsert: false,
+        contentType: file.type || "image/png",
       });
 
     if (uploadError) {
-      console.error("Image upload error:", uploadError);
-      return { success: false, error: "Failed to upload image" };
+      console.error("Image upload error:", uploadError.message, uploadError);
+      return { success: false, error: `Failed to upload image: ${uploadError.message}` };
     }
 
     const { data: { publicUrl } } = supabase.storage
