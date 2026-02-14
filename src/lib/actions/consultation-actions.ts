@@ -217,31 +217,20 @@ export async function deleteConsultation(
     const { data: { user }, error: authError } = await supabase.auth.getUser();
 
     if (authError || !user) {
-      console.error("Delete: auth error", authError);
       return { success: false, error: "Authentication required", code: "UNAUTHENTICATED" };
     }
-
-    console.log("Delete: user authenticated", user.id, "consultation", id);
 
     // Verify ownership and status
     const { data: consultation, error: selectError } = await (supabase
       .from("consultation_requests")
-      .select("id, status, user_id")
+      .select("id, status")
       .eq("id", id)
       .eq("user_id", user.id)
       .single() as any);
 
-    if (selectError) {
-      console.error("Delete: select error", selectError);
+    if (selectError || !consultation) {
       return { success: false, error: "Consultation not found" };
     }
-
-    if (!consultation) {
-      console.error("Delete: no consultation found for id", id, "user", user.id);
-      return { success: false, error: "Consultation not found" };
-    }
-
-    console.log("Delete: found consultation", consultation.id, "status:", consultation.status, "user_id:", consultation.user_id);
 
     if (consultation.status !== "pending") {
       return { success: false, error: "Can only delete pending consultations" };
@@ -249,24 +238,21 @@ export async function deleteConsultation(
 
     // Soft-delete using valid CHECK constraint value: 'declined'
     // DB CHECK: status IN ('pending', 'quoted', 'accepted', 'declined', 'expired')
-    const { data: updateData, error, count } = await (supabase
+    const { error } = await (supabase
       .from("consultation_requests")
       .update({ status: "declined" })
       .eq("id", id)
-      .eq("user_id", user.id)
-      .select() as any);
-
-    console.log("Delete: update result - data:", updateData, "error:", error, "count:", count);
+      .eq("user_id", user.id) as any);
 
     if (error) {
-      console.error("Delete consultation error:", JSON.stringify(error));
-      return { success: false, error: `Failed to delete: ${error.message || error.code || "unknown"}` };
+      console.error("Delete consultation error:", error);
+      return { success: false, error: "Failed to delete consultation" };
     }
 
     return { success: true, data: { success: true } };
   } catch (error) {
-    console.error("Delete consultation catch error:", error);
-    return { success: false, error: `Unexpected error: ${error instanceof Error ? error.message : "unknown"}` };
+    console.error("Delete consultation error:", error);
+    return { success: false, error: "An unexpected error occurred" };
   }
 }
 
