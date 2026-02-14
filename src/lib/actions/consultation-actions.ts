@@ -112,7 +112,7 @@ export async function getConsultationById(
 
     const { data: treatmentPlans } = await (supabase
       .from("treatment_plans")
-      .select("*")
+      .select("*, clinic:clinics(id, name, logo_url, city, rating, review_count, verified)")
       .eq("consultation_id", id)
       .order("created_at", { ascending: false }) as any);
 

@@ -132,3 +132,29 @@ export interface BookingTable {
     updated_at?: string;
   };
 }
+
+export interface TreatmentItem {
+  name: string;
+  nameEn?: string;
+  category?: string;
+  quantity: number;
+  unit?: string;
+  priceUsd: number;
+  priceVnd: number;
+  warrantyYears?: number;
+  notes?: string;
+}
+
+export interface ClinicInfo {
+  id: string;
+  name: string;
+  logo_url: string | null;
+  city: string;
+  rating: number;
+  review_count: number;
+  verified: boolean;
+}
+
+export type TreatmentPlanWithClinic = TreatmentPlanTable["Row"] & {
+  clinic: ClinicInfo | null;
+};

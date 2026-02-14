@@ -264,7 +264,28 @@
     "all": "All",
     "confirmed": "Confirmed",
     "completed": "Completed",
-    "cancelled": "Cancelled"
+    "cancelled": "Cancelled",
+    "quotes": {
+      "quotesReceived": "{count} quotes received",
+      "bestValue": "Best Value",
+      "viewDetails": "View Details",
+      "hideDetails": "Hide Details",
+      "services": "{count} services",
+      "service": "Service",
+      "qty": "Qty",
+      "unitPrice": "Unit Price",
+      "subtotal": "Subtotal",
+      "total": "Total",
+      "clinicNotes": "Notes from clinic",
+      "warranty": "Warranty",
+      "sortBy": "Sort by",
+      "lowestPrice": "Lowest price",
+      "highestRating": "Highest rating",
+      "newest": "Newest",
+      "savingsVsUs": "Save {amount} vs US prices",
+      "waitingForQuotes": "Waiting for clinic responses",
+      "quotesWillAppear": "Quotes from dental clinics will appear here once they review your request."
+    }
   },
   "dashboard": {
     "welcome": "Welcome, {name}!",

@@ -264,7 +264,28 @@
     "all": "Tất Cả",
     "confirmed": "Đã Xác Nhận",
     "completed": "Hoàn Thành",
-    "cancelled": "Đã Hủy"
+    "cancelled": "Đã Hủy",
+    "quotes": {
+      "quotesReceived": "Đã nhận {count} báo giá",
+      "bestValue": "Giá tốt nhất",
+      "viewDetails": "Xem chi tiết",
+      "hideDetails": "Ẩn chi tiết",
+      "services": "{count} dịch vụ",
+      "service": "Dịch vụ",
+      "qty": "SL",
+      "unitPrice": "Đơn giá",
+      "subtotal": "Thành tiền",
+      "total": "Tổng cộng",
+      "clinicNotes": "Ghi chú từ nha khoa",
+      "warranty": "Bảo hành",
+      "sortBy": "Sắp xếp",
+      "lowestPrice": "Giá thấp nhất",
+      "highestRating": "Rating cao nhất",
+      "newest": "Mới nhất",
+      "savingsVsUs": "Tiết kiệm {amount} so với giá Mỹ",
+      "waitingForQuotes": "Đang chờ phản hồi từ nha khoa",
+      "quotesWillAppear": "Báo giá từ các nha khoa sẽ hiển thị ở đây khi họ xem xét yêu cầu của bạn."
+    }
   },
   "dashboard": {
     "welcome": "Xin chào, {name}!",

@@ -1,11 +1,10 @@
 import { getConsultationById } from "@/lib/actions/consultation-actions";
-import { TreatmentPlanView } from "@/components/booking/treatment-plan-view";
+import { QuoteCardList } from "@/components/booking/quote-card-list";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { acceptTreatmentPlan } from "@/lib/actions/booking-actions";
-import { Clock } from "lucide-react";
 import { Link } from "@/i18n/routing";
 
 interface ConsultationDetailPageProps {
@@ -23,18 +22,16 @@ export default async function ConsultationDetailPage({ params }: ConsultationDet
   }
 
   const consultation = result.data;
-  const treatmentPlan = consultation.treatment_plans[0];
 
-  const handleAccept = async () => {
+  const handleAccept = async (planId: string) => {
     "use server";
-    if (!treatmentPlan) return;
-    const result = await acceptTreatmentPlan(treatmentPlan.id);
+    const result = await acceptTreatmentPlan(planId);
     if (result.success) {
       redirect(`/bookings/${result.data.bookingId}`);
     }
   };
 
-  const handleDecline = async () => {
+  const handleDecline = async (_planId: string) => {
     "use server";
     // TODO: Implement decline logic
   };
@@ -79,7 +76,7 @@ export default async function ConsultationDetailPage({ params }: ConsultationDet
                 <p className="mt-1">
                   {(() => {
                     const raw = String(consultation.travel_dates);
-                    const match = raw.match(/[\[(]([\d-]+),([\d-]+)[)\]]/);
+                    const match = raw.match(/[[(]([\d-]+),([\d-]+)[)\]]/);
                     return match ? `${match[1]} → ${match[2]}` : raw;
                   })()}
                 </p>
@@ -116,26 +113,13 @@ export default async function ConsultationDetailPage({ params }: ConsultationDet
       </div>
 
       <div className="mt-6">
-        {treatmentPlan ? (
-          <TreatmentPlanView
-            treatmentPlan={treatmentPlan}
-            onAccept={handleAccept}
-            onDecline={handleDecline}
-          />
-        ) : (
-          <Card>
-            <CardContent className="flex items-center justify-center py-12">
-              <div className="text-center">
-                <Clock className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-                <p className="text-lg font-medium">{t("consultation.waitingForResponse")}</p>
-                <p className="text-sm text-muted-foreground mt-2">
-                  {t("consultation.responseTime")}
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        )}
+        <QuoteCardList
+          treatmentPlans={consultation.treatment_plans}
+          onAccept={handleAccept}
+          onDecline={handleDecline}
+        />
       </div>
     </div>
   );
 }
+
