@@ -1,7 +1,6 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
-import { createAdminClient } from "@/lib/supabase/admin";
 import type { ActionResult } from "@/types/actions";
 import { consultationRequestSchema } from "@/lib/validators/consultation";
 import { ConsultationRequestTable, ConsultationImageTable, TreatmentPlanTable } from "@/types/database-booking-tables";
@@ -218,43 +217,56 @@ export async function deleteConsultation(
     const { data: { user }, error: authError } = await supabase.auth.getUser();
 
     if (authError || !user) {
+      console.error("Delete: auth error", authError);
       return { success: false, error: "Authentication required", code: "UNAUTHENTICATED" };
     }
 
-    // Verify ownership and status using session client (respects RLS SELECT)
-    const { data: consultation } = await (supabase
+    console.log("Delete: user authenticated", user.id, "consultation", id);
+
+    // Verify ownership and status
+    const { data: consultation, error: selectError } = await (supabase
       .from("consultation_requests")
-      .select("id, status")
+      .select("id, status, user_id")
       .eq("id", id)
       .eq("user_id", user.id)
       .single() as any);
 
-    if (!consultation) {
+    if (selectError) {
+      console.error("Delete: select error", selectError);
       return { success: false, error: "Consultation not found" };
     }
+
+    if (!consultation) {
+      console.error("Delete: no consultation found for id", id, "user", user.id);
+      return { success: false, error: "Consultation not found" };
+    }
+
+    console.log("Delete: found consultation", consultation.id, "status:", consultation.status, "user_id:", consultation.user_id);
 
     if (consultation.status !== "pending") {
       return { success: false, error: "Can only delete pending consultations" };
     }
 
-    // Soft-delete: set status to 'declined' (valid in DB CHECK constraint)
-    // DB constraint only allows: pending, quoted, accepted, declined, expired
-    const adminClient = createAdminClient();
-    const { error } = await (adminClient
+    // Soft-delete using valid CHECK constraint value: 'declined'
+    // DB CHECK: status IN ('pending', 'quoted', 'accepted', 'declined', 'expired')
+    const { data: updateData, error, count } = await (supabase
       .from("consultation_requests")
       .update({ status: "declined" })
       .eq("id", id)
-      .eq("user_id", user.id) as any);
+      .eq("user_id", user.id)
+      .select() as any);
+
+    console.log("Delete: update result - data:", updateData, "error:", error, "count:", count);
 
     if (error) {
-      console.error("Delete consultation error:", error);
-      return { success: false, error: "Failed to delete consultation" };
+      console.error("Delete consultation error:", JSON.stringify(error));
+      return { success: false, error: `Failed to delete: ${error.message || error.code || "unknown"}` };
     }
 
     return { success: true, data: { success: true } };
   } catch (error) {
-    console.error("Delete consultation error:", error);
-    return { success: false, error: "An unexpected error occurred" };
+    console.error("Delete consultation catch error:", error);
+    return { success: false, error: `Unexpected error: ${error instanceof Error ? error.message : "unknown"}` };
   }
 }
 
@@ -302,9 +314,7 @@ export async function updateConsultation(
       updateData.clinic_id = data.clinicId || null;
     }
 
-    // Use admin client to bypass RLS for mutation (ownership already verified above)
-    const adminClient = createAdminClient();
-    const { error } = await (adminClient
+    const { error } = await (supabase
       .from("consultation_requests")
       .update(updateData)
       .eq("id", id)
