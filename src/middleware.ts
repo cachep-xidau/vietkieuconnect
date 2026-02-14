@@ -47,10 +47,11 @@ export async function middleware(request: NextRequest) {
   const isProtectedPage =
     !isAdminPage &&
     (pathname.includes("/profile") ||
-     pathname.includes("/bookings") ||
-     pathname.includes("/dashboard") ||
-     pathname.includes("/consultations") ||
-     pathname.includes("/reviews"));
+      pathname.includes("/bookings") ||
+      pathname.includes("/dashboard") ||
+      pathname.includes("/consultation") ||
+      pathname.includes("/consultations") ||
+      pathname.includes("/reviews"));
 
   // Handle admin pages first
   if (isAdminPage) {

@@ -107,7 +107,7 @@ export async function submitReview(
       content: validation.data.content,
       treatment_type: validation.data.treatmentType || null,
       photos: photoUrls,
-      status: "approved", // Auto-approve reviews from verified bookings
+      status: "pending", // Requires admin moderation before visible
     };
 
     const { data: review, error: reviewError } = await (supabase

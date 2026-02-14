@@ -56,7 +56,7 @@ export async function getAllBookingsAdmin(
     }
 
     if (filters?.search) {
-      query = query.or(`user.email.ilike.%${filters.search}%,clinic.name.ilike.%${filters.search}%`);
+      query = query.ilike("status", `%${filters.search}%`);
     }
 
     query = query

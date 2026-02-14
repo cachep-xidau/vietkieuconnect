@@ -94,7 +94,7 @@ export async function signOut(): Promise<ActionResult<null>> {
     };
   }
 
-  redirect("/dashboard");
+  redirect("/");
 }
 
 export async function resetPassword(

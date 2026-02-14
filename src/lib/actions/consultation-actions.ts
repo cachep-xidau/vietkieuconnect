@@ -1,13 +1,20 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
-import { ActionResult } from "@/types/actions";
+import type { ActionResult } from "@/types/actions";
+import { consultationRequestSchema } from "@/lib/validators/consultation";
 import { ConsultationRequestTable, ConsultationImageTable, TreatmentPlanTable } from "@/types/database-booking-tables";
 import { ConsultationRequestInput } from "@/lib/validators/consultation";
 
 export async function submitConsultation(
   data: ConsultationRequestInput
 ): Promise<ActionResult<{ consultationId: string }>> {
+  // Server-side validation
+  const validation = consultationRequestSchema.safeParse(data);
+  if (!validation.success) {
+    return { success: false, error: validation.error.issues[0].message };
+  }
+
   try {
     const supabase = await createClient();
     const { data: { user }, error: authError } = await supabase.auth.getUser();

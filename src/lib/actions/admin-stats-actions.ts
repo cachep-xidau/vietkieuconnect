@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
+import { checkAdminRole } from "@/lib/auth/admin-auth-helper";
 
 export interface DashboardStats {
   totalClinics: number;
@@ -14,6 +15,7 @@ export interface DashboardStats {
  * @returns Dashboard stats object
  */
 export async function getDashboardStats(): Promise<DashboardStats> {
+  await checkAdminRole();
   const supabase = await createClient();
 
   // Count total clinics

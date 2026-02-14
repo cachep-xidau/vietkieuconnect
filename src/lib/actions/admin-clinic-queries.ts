@@ -36,7 +36,7 @@ export async function getAllClinicsAdmin(
 
     // Search filter (name or city)
     if (filters?.search) {
-      query = query.or(`name.ilike.%${filters.search}%,city.ilike.%${filters.search}%`);
+      query = query.ilike("name", `%${filters.search}%`);
     }
 
     // Verified filter

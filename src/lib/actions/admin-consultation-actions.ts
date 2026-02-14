@@ -59,7 +59,7 @@ export async function getAllConsultationsAdmin(
     }
 
     if (filters?.search) {
-      query = query.or(`treatment_description.ilike.%${filters.search}%`);
+      query = query.ilike("treatment_description", `%${filters.search}%`);
     }
 
     query = query

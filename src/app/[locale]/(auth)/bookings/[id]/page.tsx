@@ -48,9 +48,9 @@ export default async function BookingDetailPage({ params }: BookingDetailPagePro
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
         <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
-          <a href="/dashboard" className="hover:text-foreground">Dashboard</a>
+          <Link href="/dashboard" className="hover:text-foreground">Dashboard</Link>
           <span>/</span>
-          <a href="/bookings" className="hover:text-foreground">{t("booking.myBookings")}</a>
+          <Link href="/bookings" className="hover:text-foreground">{t("booking.myBookings")}</Link>
           <span>/</span>
           <span className="text-foreground">{t("booking.bookingDetails")}</span>
         </nav>

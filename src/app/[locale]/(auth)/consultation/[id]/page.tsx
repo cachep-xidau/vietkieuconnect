@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { acceptTreatmentPlan } from "@/lib/actions/booking-actions";
 import { Clock } from "lucide-react";
+import { Link } from "@/i18n/routing";
 
 interface ConsultationDetailPageProps {
   params: Promise<{ id: string; locale: string }>;
@@ -42,9 +43,9 @@ export default async function ConsultationDetailPage({ params }: ConsultationDet
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
         <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
-          <a href="/dashboard" className="hover:text-foreground">Dashboard</a>
+          <Link href="/dashboard" className="hover:text-foreground">Dashboard</Link>
           <span>/</span>
-          <a href="/consultations" className="hover:text-foreground">Consultations</a>
+          <Link href="/consultations" className="hover:text-foreground">Consultations</Link>
           <span>/</span>
           <span className="text-foreground">Details</span>
         </nav>
@@ -75,7 +76,13 @@ export default async function ConsultationDetailPage({ params }: ConsultationDet
             {consultation.travel_dates && (
               <div>
                 <p className="text-sm text-muted-foreground">Travel Dates</p>
-                <p className="mt-1">{JSON.stringify(consultation.travel_dates)}</p>
+                <p className="mt-1">
+                  {(() => {
+                    const raw = String(consultation.travel_dates);
+                    const match = raw.match(/[\[(]([\d-]+),([\d-]+)[)\]]/);
+                    return match ? `${match[1]} → ${match[2]}` : raw;
+                  })()}
+                </p>
               </div>
             )}
 
