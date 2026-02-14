@@ -19,24 +19,38 @@ export function XrayUploader({ images, previews, onAddImage, onRemoveImage, erro
   const t = useTranslations();
   const [showConsent, setShowConsent] = useState(false);
   const [consentGiven, setConsentGiven] = useState(false);
+  const [pendingFiles, setPendingFiles] = useState<File[]>([]);
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
-    if (!files) return;
+    if (!files || files.length === 0) return;
+
+    const fileArray = Array.from(files);
 
     if (!consentGiven && images.length === 0) {
+      // Store files for after consent
+      setPendingFiles(fileArray);
       setShowConsent(true);
+      // Reset input so same files can be re-selected
+      e.target.value = "";
       return;
     }
 
-    Array.from(files).forEach((file) => {
+    fileArray.forEach((file) => {
       onAddImage(file);
     });
+    // Reset input
+    e.target.value = "";
   };
 
   const handleConsentConfirm = () => {
     setConsentGiven(true);
     setShowConsent(false);
+    // Process the pending files that were stored before consent
+    pendingFiles.forEach((file) => {
+      onAddImage(file);
+    });
+    setPendingFiles([]);
   };
 
   return (
