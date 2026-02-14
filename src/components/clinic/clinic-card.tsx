@@ -1,3 +1,5 @@
+"use client";
+
 import { Link } from "@/i18n/routing";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
