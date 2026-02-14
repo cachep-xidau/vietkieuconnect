@@ -158,7 +158,13 @@
     "allCities": "Tất Cả Thành Phố",
     "beforeAfter": "Trước & Sau",
     "showMore": "Xem Thêm",
-    "showLess": "Thu Gọn"
+    "showLess": "Thu Gọn",
+    "hotline": "Hotline",
+    "directions": "Chỉ đường",
+    "allCitiesChip": "Tất cả",
+    "cityHanoi": "Hà Nội",
+    "cityHCM": "TP.HCM",
+    "cityDaNang": "Đà Nẵng"
   },
   "consultation": {
     "title": "Yêu Cầu Tư Vấn Miễn Phí",

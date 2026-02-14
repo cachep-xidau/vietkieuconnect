@@ -15,13 +15,11 @@ import { useClinicFilter } from "@/hooks/use-clinic-filter";
 
 const TREATMENT_TYPES = ["implant", "veneer", "braces", "general"] as const;
 const SORT_OPTIONS = ["rating", "reviews", "newest"] as const;
-const CITIES = [
-  "All Cities",
-  "Hanoi",
-  "Ho Chi Minh City",
-  "Da Nang",
-  "Nha Trang",
-  "Can Tho",
+const CITY_CHIPS = [
+  { value: "All Cities", labelKey: "allCitiesChip" },
+  { value: "Hanoi", labelKey: "cityHanoi" },
+  { value: "Ho Chi Minh City", labelKey: "cityHCM" },
+  { value: "Da Nang", labelKey: "cityDaNang" },
 ] as const;
 
 export function ClinicFilter() {
@@ -48,6 +46,20 @@ export function ClinicFilter() {
 
   return (
     <div className="space-y-4">
+      {/* Quick City Chips */}
+      <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide">
+        {CITY_CHIPS.map((chip) => (
+          <Badge
+            key={chip.value}
+            variant={city === chip.value || (chip.value === "All Cities" && city === "All Cities") ? "default" : "outline"}
+            className="cursor-pointer whitespace-nowrap px-3 py-1.5 text-sm"
+            onClick={() => setCity(chip.value)}
+          >
+            {t(chip.labelKey)}
+          </Badge>
+        ))}
+      </div>
+
       <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
         <div className="flex flex-wrap gap-2">
           <span className="text-sm font-medium text-text-secondary self-center">
@@ -68,19 +80,6 @@ export function ClinicFilter() {
         </div>
 
         <div className="flex gap-2 flex-wrap md:flex-nowrap w-full md:w-auto">
-          <Select value={city} onValueChange={setCity}>
-            <SelectTrigger className="w-full md:w-[180px]">
-              <SelectValue placeholder={t("allCities")} />
-            </SelectTrigger>
-            <SelectContent>
-              {CITIES.map((c) => (
-                <SelectItem key={c} value={c}>
-                  {c}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-
           <Select value={sortBy} onValueChange={setSortBy}>
             <SelectTrigger className="w-full md:w-[180px]">
               <SelectValue placeholder={t("sortByRating")} />

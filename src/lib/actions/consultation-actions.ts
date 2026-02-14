@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import type { ActionResult } from "@/types/actions";
 import { consultationRequestSchema } from "@/lib/validators/consultation";
 import { ConsultationRequestTable, ConsultationImageTable, TreatmentPlanTable } from "@/types/database-booking-tables";
+import type { TreatmentPlanWithClinic } from "@/types/database-booking-tables";
 import { ConsultationRequestInput } from "@/lib/validators/consultation";
 
 export async function submitConsultation(
@@ -83,7 +84,7 @@ export async function getConsultationById(
   id: string
 ): Promise<ActionResult<ConsultationRequestTable["Row"] & {
   images: ConsultationImageTable["Row"][];
-  treatment_plans: TreatmentPlanTable["Row"][];
+  treatment_plans: TreatmentPlanWithClinic[];
 }>> {
   try {
     const supabase = await createClient();

@@ -158,7 +158,13 @@
     "allCities": "All Cities",
     "beforeAfter": "Before & After",
     "showMore": "Show More",
-    "showLess": "Show Less"
+    "showLess": "Show Less",
+    "hotline": "Hotline",
+    "directions": "Map",
+    "allCitiesChip": "All",
+    "cityHanoi": "Hà Nội",
+    "cityHCM": "TP.HCM",
+    "cityDaNang": "Đà Nẵng"
   },
   "consultation": {
     "title": "Request Free Consultation",
