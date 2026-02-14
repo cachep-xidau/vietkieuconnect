@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 import type { ActionResult } from "@/types/actions";
 import { consultationRequestSchema } from "@/lib/validators/consultation";
 import { ConsultationRequestTable, ConsultationImageTable, TreatmentPlanTable } from "@/types/database-booking-tables";
@@ -168,7 +169,11 @@ export async function uploadConsultationImage(
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 
-    const { error: uploadError } = await supabase.storage
+    // Use admin client for storage upload (bypasses RLS)
+    // Ownership is already verified above via consultation query
+    const adminClient = createAdminClient();
+
+    const { error: uploadError } = await adminClient.storage
       .from("consultation-images")
       .upload(fileName, buffer, {
         cacheControl: "3600",
@@ -181,7 +186,7 @@ export async function uploadConsultationImage(
       return { success: false, error: `Failed to upload image: ${uploadError.message}` };
     }
 
-    const { data: { publicUrl } } = supabase.storage
+    const { data: { publicUrl } } = adminClient.storage
       .from("consultation-images")
       .getPublicUrl(fileName);
 
