@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { RatingStars } from "./rating-stars";
 import { SavingsBadge } from "./savings-badge";
-import { ShieldCheck, MapPin, Phone, Navigation } from "lucide-react";
+import { ShieldCheck, MapPin, Phone, ExternalLink } from "lucide-react";
 import { ClinicTable } from "@/types/database-clinic-tables";
 import { useTranslations } from "next-intl";
 
@@ -63,12 +63,19 @@ export function ClinicCard({ clinic, locale }: ClinicCardProps) {
             )}
           </div>
 
-          {/* Address - truncated 1 line */}
+          {/* Address — clickable, opens Google Maps */}
           {clinic.address && (
-            <p className="text-xs text-muted-foreground truncate flex items-center gap-1.5">
+            <a
+              href={getGoogleMapsUrl(clinic.address, clinic.city)}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="text-xs text-primary/80 hover:text-primary truncate flex items-center gap-1.5 transition-colors group"
+            >
               <MapPin className="h-3 w-3 flex-shrink-0" />
-              {clinic.address}
-            </p>
+              <span className="truncate group-hover:underline">{clinic.address}</span>
+              <ExternalLink className="h-2.5 w-2.5 flex-shrink-0 opacity-50 group-hover:opacity-100" />
+            </a>
           )}
 
           <RatingStars rating={clinic.rating} reviewCount={clinic.review_count} />
@@ -90,7 +97,7 @@ export function ClinicCard({ clinic, locale }: ClinicCardProps) {
             )}
           </div>
 
-          {/* Action Buttons - Hotline, Map, CTA */}
+          {/* Action Buttons — Hotline + Đặt lịch */}
           <div className="flex gap-2 pt-2">
             {clinic.phone && (
               <Button
@@ -106,25 +113,8 @@ export function ClinicCard({ clinic, locale }: ClinicCardProps) {
                 </a>
               </Button>
             )}
-            <Button
-              variant="outline"
-              size="sm"
-              className="flex-shrink-0"
-              asChild
-              onClick={(e: React.MouseEvent) => e.stopPropagation()}
-            >
-              <a
-                href={getGoogleMapsUrl(clinic.address, clinic.city)}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <Navigation className="h-3.5 w-3.5 mr-1.5" />
-                {t("directions")}
-              </a>
-            </Button>
             <Button size="sm" className="flex-1" asChild>
-              <span>{t("requestConsultation")}</span>
+              <span>{t("bookAppointment")}</span>
             </Button>
           </div>
         </div>
