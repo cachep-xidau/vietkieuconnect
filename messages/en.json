@@ -33,7 +33,7 @@
     "bookings": "My Bookings",
     "reviews": "Reviews",
     "profile": "Profile",
-    "consult": "Consult"
+    "consult": "My Consultation"
   },
   "landing": {
     "hero": {
@@ -162,6 +162,8 @@
   },
   "consultation": {
     "title": "Request Free Consultation",
+    "myConsultations": "My Consultations",
+    "myConsultationsDesc": "Track and manage your consultation requests",
     "step1": "Describe Your Needs",
     "step2": "Upload Images",
     "step3": "Confirm Request",
@@ -183,7 +185,18 @@
     "reviewAndSubmit": "Review & Submit",
     "submitting": "Submitting...",
     "waitingForResponse": "Waiting for clinic response",
-    "stepOf": "Step {current} of {total}"
+    "stepOf": "Step {current} of {total}",
+    "editConsultation": "Edit",
+    "deleteConsultation": "Delete",
+    "deleteConfirm": "Delete this consultation?",
+    "deleteDescription": "This will cancel your consultation request. This action cannot be undone.",
+    "updateSuccess": "Consultation updated successfully",
+    "deleteSuccess": "Consultation deleted successfully",
+    "progressSubmitted": "Submitted",
+    "progressReviewing": "Under Review",
+    "progressQuoted": "Quoted",
+    "progressBooked": "Booked",
+    "viewDetails": "View Details"
   },
   "review": {
     "verified": "Verified VK",

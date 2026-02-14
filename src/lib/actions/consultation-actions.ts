@@ -208,3 +208,111 @@ export async function uploadConsultationImage(
     return { success: false, error: "An unexpected error occurred" };
   }
 }
+
+export async function deleteConsultation(
+  id: string
+): Promise<ActionResult<{ success: boolean }>> {
+  try {
+    const supabase = await createClient();
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+
+    if (authError || !user) {
+      return { success: false, error: "Authentication required", code: "UNAUTHENTICATED" };
+    }
+
+    // Verify ownership and status
+    const { data: consultation } = await (supabase
+      .from("consultation_requests")
+      .select("id, status")
+      .eq("id", id)
+      .eq("user_id", user.id)
+      .single() as any);
+
+    if (!consultation) {
+      return { success: false, error: "Consultation not found" };
+    }
+
+    if (consultation.status !== "pending") {
+      return { success: false, error: "Can only delete pending consultations" };
+    }
+
+    const { error } = await (supabase
+      .from("consultation_requests")
+      .update({ status: "cancelled" })
+      .eq("id", id)
+      .eq("user_id", user.id) as any);
+
+    if (error) {
+      console.error("Delete consultation error:", error);
+      return { success: false, error: "Failed to delete consultation" };
+    }
+
+    return { success: true, data: { success: true } };
+  } catch (error) {
+    console.error("Delete consultation error:", error);
+    return { success: false, error: "An unexpected error occurred" };
+  }
+}
+
+export async function updateConsultation(
+  id: string,
+  data: Partial<ConsultationRequestInput>
+): Promise<ActionResult<{ success: boolean }>> {
+  try {
+    const supabase = await createClient();
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+
+    if (authError || !user) {
+      return { success: false, error: "Authentication required", code: "UNAUTHENTICATED" };
+    }
+
+    // Verify ownership and status
+    const { data: consultation } = await (supabase
+      .from("consultation_requests")
+      .select("id, status")
+      .eq("id", id)
+      .eq("user_id", user.id)
+      .single() as any);
+
+    if (!consultation) {
+      return { success: false, error: "Consultation not found" };
+    }
+
+    if (consultation.status !== "pending") {
+      return { success: false, error: "Can only edit pending consultations" };
+    }
+
+    const updateData: Record<string, unknown> = {};
+    if (data.treatmentDescription !== undefined) {
+      updateData.treatment_description = data.treatmentDescription;
+    }
+    if (data.patientCount !== undefined) {
+      updateData.patient_count = data.patientCount;
+    }
+    if (data.travelDates !== undefined) {
+      updateData.travel_dates = data.travelDates?.start
+        ? `[${data.travelDates.start}, ${data.travelDates.end || data.travelDates.start}]`
+        : null;
+    }
+    if (data.clinicId !== undefined) {
+      updateData.clinic_id = data.clinicId || null;
+    }
+
+    const { error } = await (supabase
+      .from("consultation_requests")
+      .update(updateData)
+      .eq("id", id)
+      .eq("user_id", user.id) as any);
+
+    if (error) {
+      console.error("Update consultation error:", error);
+      return { success: false, error: "Failed to update consultation" };
+    }
+
+    return { success: true, data: { success: true } };
+  } catch (error) {
+    console.error("Update consultation error:", error);
+    return { success: false, error: "An unexpected error occurred" };
+  }
+}
+

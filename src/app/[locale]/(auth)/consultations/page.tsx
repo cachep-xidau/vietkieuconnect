@@ -6,10 +6,12 @@ import { Link } from "@/i18n/routing";
 import { getConsultations } from "@/lib/actions/consultation-actions";
 import { ConsultationRequestTable } from "@/types/database-booking-tables";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Clock, FileText, CheckCircle, XCircle, Plus } from "lucide-react";
+import { Clock, FileText, CheckCircle, XCircle, Plus, Pencil, Trash2 } from "lucide-react";
+import { ConsultationProgress } from "@/components/booking/consultation-progress";
+import { ConsultationEditModal } from "@/components/booking/consultation-edit-modal";
+import { ConsultationDeleteDialog } from "@/components/booking/consultation-delete-dialog";
 
 type ConsultationStatus = "pending" | "quoted" | "accepted" | "declined";
 
@@ -22,6 +24,8 @@ export default function ConsultationsPage() {
   const [consultations, setConsultations] = useState<ConsultationRequestTable["Row"][]>([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<"all" | ConsultationStatus>("all");
+  const [editingConsultation, setEditingConsultation] = useState<ConsultationRequestTable["Row"] | null>(null);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
 
   useEffect(() => {
     loadConsultations();
@@ -34,23 +38,6 @@ export default function ConsultationsPage() {
       setConsultations(result.data);
     }
     setLoading(false);
-  };
-
-  const getStatusBadge = (status: string) => {
-    const statusMap = {
-      pending: { variant: "secondary" as const, label: tBooking("status.pending"), icon: Clock },
-      quoted: { variant: "default" as const, label: tBooking("status.plan_sent"), icon: FileText },
-      accepted: { variant: "default" as const, label: tBooking("status.confirmed"), icon: CheckCircle },
-      declined: { variant: "destructive" as const, label: tBooking("status.cancelled"), icon: XCircle },
-    };
-    const config = statusMap[status as keyof typeof statusMap] || statusMap.pending;
-    const Icon = config.icon;
-    return (
-      <Badge variant={config.variant} className="flex items-center gap-1 w-fit">
-        <Icon className="h-3 w-3" />
-        {config.label}
-      </Badge>
-    );
   };
 
   const filteredConsultations = activeTab === "all"
@@ -68,12 +55,12 @@ export default function ConsultationsPage() {
             {t("nav.home")}
           </Link>
           <span>/</span>
-          <span className="text-foreground">{t("nav.consult")}</span>
+          <span className="text-foreground">{tConsultation("myConsultations")}</span>
         </nav>
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold">{tConsultation("title")}</h1>
-            <p className="text-muted-foreground mt-2">{tConsultation("description")}</p>
+            <h1 className="text-3xl font-bold">{tConsultation("myConsultations")}</h1>
+            <p className="text-muted-foreground mt-2">{tConsultation("myConsultationsDesc")}</p>
           </div>
           <Button asChild>
             <Link href="/consultation/new">
@@ -90,12 +77,15 @@ export default function ConsultationsPage() {
             {t("common.viewAll")} ({consultations.length})
           </TabsTrigger>
           <TabsTrigger value="pending">
+            <Clock className="h-3 w-3 mr-1" />
             {tBooking("status.pending")} ({getStatusCount("pending")})
           </TabsTrigger>
           <TabsTrigger value="quoted">
+            <FileText className="h-3 w-3 mr-1" />
             {tBooking("status.plan_sent")} ({getStatusCount("quoted")})
           </TabsTrigger>
           <TabsTrigger value="accepted">
+            <CheckCircle className="h-3 w-3 mr-1" />
             {tBooking("status.confirmed")} ({getStatusCount("accepted")})
           </TabsTrigger>
         </TabsList>
@@ -125,9 +115,9 @@ export default function ConsultationsPage() {
             <div className="grid gap-4">
               {filteredConsultations.map((consultation) => (
                 <Card key={consultation.id} className="hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
+                  <CardHeader className="pb-3">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex-1 min-w-0">
                         <CardTitle className="text-lg line-clamp-2">
                           {consultation.treatment_description}
                         </CardTitle>
@@ -139,11 +129,37 @@ export default function ConsultationsPage() {
                           })}
                         </p>
                       </div>
-                      {getStatusBadge(consultation.status)}
+                      {/* Edit/Delete actions — only for pending */}
+                      {consultation.status === "pending" && (
+                        <div className="flex items-center gap-1 flex-shrink-0">
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="h-8 w-8 text-muted-foreground hover:text-primary"
+                            onClick={() => setEditingConsultation(consultation)}
+                            title={tConsultation("editConsultation")}
+                          >
+                            <Pencil className="h-4 w-4" />
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="h-8 w-8 text-muted-foreground hover:text-destructive"
+                            onClick={() => setDeletingId(consultation.id)}
+                            title={tConsultation("deleteConsultation")}
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </div>
+                      )}
                     </div>
                   </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center gap-6 text-sm text-muted-foreground mb-4">
+                  <CardContent className="space-y-4">
+                    {/* Progress Stepper */}
+                    <ConsultationProgress status={consultation.status} />
+
+                    {/* Info row */}
+                    <div className="flex items-center gap-6 text-sm text-muted-foreground">
                       <div>
                         <span className="font-medium">{tConsultation("patientCount")}:</span>{" "}
                         {consultation.patient_count}
@@ -153,9 +169,8 @@ export default function ConsultationsPage() {
                           <span className="font-medium">{tConsultation("travelDates")}:</span>{" "}
                           {(() => {
                             try {
-                              // Parse Postgres DATERANGE format: "[2026-03-01,2026-03-15)"
                               const raw = String(consultation.travel_dates);
-                              const match = raw.match(/[\[(]([\d-]+),([\d-]+)[)\]]/);
+                              const match = raw.match(/[[(]([\d-]+),([\d-]+)[)\]]/);
                               return match ? match[1] : "Not specified";
                             } catch {
                               return "Not specified";
@@ -164,10 +179,12 @@ export default function ConsultationsPage() {
                         </div>
                       )}
                     </div>
-                    <div className="flex gap-2">
+
+                    {/* Action buttons */}
+                    <div className="flex gap-2 pt-1">
                       <Button asChild variant="default" size="sm">
                         <Link href={`/consultation/${consultation.id}`}>
-                          {t("common.viewAll")}
+                          {tConsultation("viewDetails")}
                         </Link>
                       </Button>
                       {consultation.status === "quoted" && (
@@ -185,6 +202,26 @@ export default function ConsultationsPage() {
           )}
         </TabsContent>
       </Tabs>
+
+      {/* Edit Modal */}
+      {editingConsultation && (
+        <ConsultationEditModal
+          consultation={editingConsultation}
+          open={!!editingConsultation}
+          onOpenChange={(open) => !open && setEditingConsultation(null)}
+          onSuccess={loadConsultations}
+        />
+      )}
+
+      {/* Delete Dialog */}
+      {deletingId && (
+        <ConsultationDeleteDialog
+          consultationId={deletingId}
+          open={!!deletingId}
+          onOpenChange={(open) => !open && setDeletingId(null)}
+          onSuccess={loadConsultations}
+        />
+      )}
     </div>
   );
 }

@@ -45,10 +45,12 @@ export function Header() {
     return () => subscription.unsubscribe();
   }, []);
 
+  const tConsultation = useTranslations("consultation");
+
   const navLinks = [
     { href: "/", label: t("home") },
     { href: "/clinics", label: t("clinics") },
-    { href: "/dashboard", label: "Dashboard" },
+    { href: "/consultations", label: tConsultation("myConsultations") },
     { href: "/how-it-works", label: t("howItWorks") },
   ];
 

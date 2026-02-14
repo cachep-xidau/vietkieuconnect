@@ -33,7 +33,7 @@
     "bookings": "Lịch hẹn",
     "reviews": "Đánh giá",
     "profile": "Tài khoản",
-    "consult": "Tư vấn"
+    "consult": "Tư Vấn Của Tôi"
   },
   "landing": {
     "hero": {
@@ -162,6 +162,8 @@
   },
   "consultation": {
     "title": "Yêu Cầu Tư Vấn Miễn Phí",
+    "myConsultations": "Tư Vấn Của Tôi",
+    "myConsultationsDesc": "Theo dõi và quản lý yêu cầu tư vấn của bạn",
     "step1": "Mô Tả Nhu Cầu",
     "step2": "Tải Ảnh Lên",
     "step3": "Xác Nhận",
@@ -183,7 +185,18 @@
     "reviewAndSubmit": "Xem Lại & Gửi",
     "submitting": "Đang gửi...",
     "waitingForResponse": "Đang chờ phản hồi từ phòng khám",
-    "stepOf": "Bước {current} / {total}"
+    "stepOf": "Bước {current} / {total}",
+    "editConsultation": "Sửa",
+    "deleteConsultation": "Xóa",
+    "deleteConfirm": "Xóa tư vấn này?",
+    "deleteDescription": "Yêu cầu tư vấn sẽ bị hủy. Hành động này không thể hoàn tác.",
+    "updateSuccess": "Đã cập nhật tư vấn thành công",
+    "deleteSuccess": "Đã xóa tư vấn thành công",
+    "progressSubmitted": "Đã Gửi",
+    "progressReviewing": "Đang Xem Xét",
+    "progressQuoted": "Đã Báo Giá",
+    "progressBooked": "Đã Đặt Lịch",
+    "viewDetails": "Xem Chi Tiết"
   },
   "review": {
     "verified": "VK Đã Xác Minh",
