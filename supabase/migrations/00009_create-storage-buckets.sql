@@ -40,14 +40,11 @@ CREATE POLICY "Public read consultation images"
 ON storage.objects FOR SELECT
 USING (bucket_id = 'consultation-images');
 
--- Authenticated users can upload to their own folder
-CREATE POLICY "Users upload own consultation images"
+-- Authenticated users can upload consultation images
+CREATE POLICY "Authenticated upload consultation images"
 ON storage.objects FOR INSERT
-WITH CHECK (
-  bucket_id = 'consultation-images'
-  AND auth.role() = 'authenticated'
-  AND (storage.foldername(name))[1] = auth.uid()::text
-);
+TO authenticated
+WITH CHECK (bucket_id = 'consultation-images');
 
 -- Users can delete their own uploads
 CREATE POLICY "Users delete own consultation images"
@@ -66,14 +63,11 @@ CREATE POLICY "Public read review photos"
 ON storage.objects FOR SELECT
 USING (bucket_id = 'review-photos');
 
--- Authenticated users can upload to their own folder
-CREATE POLICY "Users upload own review photos"
+-- Authenticated users can upload review photos
+CREATE POLICY "Authenticated upload review photos"
 ON storage.objects FOR INSERT
-WITH CHECK (
-  bucket_id = 'review-photos'
-  AND auth.role() = 'authenticated'
-  AND (storage.foldername(name))[1] = auth.uid()::text
-);
+TO authenticated
+WITH CHECK (bucket_id = 'review-photos');
 
 -- Users can delete their own review photos
 CREATE POLICY "Users delete own review photos"
