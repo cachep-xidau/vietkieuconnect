@@ -96,9 +96,11 @@ export function ConsultationStepTreatment({
                         className="rounded-lg object-cover"
                       />
                     ) : (
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center text-sm font-semibold text-primary">
-                        {clinic.name.charAt(0)}
-                      </div>
+                      <img
+                        src={clinic.photos?.[0] || "https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=200&auto=format&fit=crop"}
+                        alt={clinic.name}
+                        className="w-10 h-10 rounded-lg object-cover"
+                      />
                     )}
                   </div>
 

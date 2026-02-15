@@ -37,11 +37,21 @@
   },
   "landing": {
     "hero": {
-      "title": "Quality Dental Care in Vietnam\nat 60-80% Lower Cost",
-      "subtitle": "Connect with verified clinics, get transparent quotes, and travel with confidence. Trusted by thousands of Việt Kiều.",
-      "cta": "Start Free Consultation",
-      "ctaLoggedIn": "New Consultation",
-      "ctaSecondary": "How It Works"
+      "slide1Title": "Save 60-80% on\nWorld-Class Dentistry",
+      "slide1Subtitle": "Connect with verified clinics, get transparent quotes, and travel with confidence. Trusted by thousands of Việt Kiều.",
+      "slide1Cta1": "Start Free Consultation",
+      "slide1Cta2": "See Savings",
+      "slide1Cta3": "How It Works",
+      "slide2Title": "50+ Verified Clinics\nAcross Vietnam",
+      "slide2Subtitle": "Every clinic is vetted by our team. Read real patient reviews, compare ratings, and choose with confidence.",
+      "slide2Cta1": "Find a Clinic",
+      "slide2Cta2": "Read Reviews",
+      "slide2Cta3": "Compare Prices",
+      "slide3Title": "Your Dental Journey\nStarts Here",
+      "slide3Subtitle": "From your first consultation to your final appointment — we guide you every step of the way.",
+      "slide3Cta1": "Request a Quote",
+      "slide3Cta2": "View Testimonials",
+      "slide3Cta3": "Contact Support"
     },
     "stats": {
       "savings": "Average Savings",
@@ -52,6 +62,16 @@
       "reviewsValue": "2,000+",
       "satisfaction": "Satisfaction",
       "satisfactionValue": "98%"
+    },
+    "trustBadges": {
+      "verified": "Verified Clinics",
+      "verifiedDesc": "Every clinic vetted by our team",
+      "response": "24h Response",
+      "responseDesc": "Get quotes within 24 hours",
+      "transparent": "No Hidden Fees",
+      "transparentDesc": "Transparent pricing guaranteed",
+      "secure": "Secure & Private",
+      "secureDesc": "Your data is encrypted & protected"
     },
     "howItWorks": {
       "title": "How It Works",
@@ -109,10 +129,8 @@
     "services": "Services",
     "clinicDirectory": "Clinic Directory",
     "freeConsultation": "Free Consultation",
-    "costCalculator": "Cost Calculator",
     "resources": "Resources",
     "howItWorks": "How It Works",
-    "dentalGuide": "Dental Tourism Guide",
     "faq": "FAQ",
     "contact": "Contact",
     "email": "Email Us",
@@ -165,7 +183,18 @@
     "cityHanoi": "Hà Nội",
     "cityHCM": "TP.HCM",
     "cityDaNang": "Đà Nẵng",
-    "bookAppointment": "Book Now"
+    "bookAppointment": "Book Now",
+    "pricingServices": {
+      "consultation": "Consultation",
+      "implant": "Dental Implant",
+      "crown": "Porcelain Crown",
+      "veneer": "Veneer",
+      "braces": "Braces",
+      "whitening": "Teeth Whitening",
+      "cleaning": "Teeth Cleaning",
+      "rootCanal": "Root Canal"
+    },
+    "free": "Free"
   },
   "consultation": {
     "title": "Request Free Consultation",

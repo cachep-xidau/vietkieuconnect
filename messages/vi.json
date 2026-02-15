@@ -37,11 +37,21 @@
   },
   "landing": {
     "hero": {
-      "title": "Nha Khoa Chất Lượng tại Việt Nam\nTiết kiệm 60-80%",
-      "subtitle": "Kết nối với phòng khám uy tín, nhận báo giá minh bạch, du lịch yên tâm. Được hàng ngàn Việt Kiều tin tưởng.",
-      "cta": "Tư Vấn Miễn Phí",
-      "ctaLoggedIn": "Tư Vấn Mới",
-      "ctaSecondary": "Cách Hoạt Động"
+      "slide1Title": "Tiết Kiệm 60-80%\nNha Khoa Đẳng Cấp",
+      "slide1Subtitle": "Kết nối với phòng khám uy tín, nhận báo giá minh bạch, du lịch yên tâm. Được hàng ngàn Việt Kiều tin tưởng.",
+      "slide1Cta1": "Tư Vấn Miễn Phí",
+      "slide1Cta2": "Xem Tiết Kiệm",
+      "slide1Cta3": "Cách Hoạt Động",
+      "slide2Title": "50+ Phòng Khám\nUy Tín Toàn Quốc",
+      "slide2Subtitle": "Mỗi phòng khám được đội ngũ thẩm định. Đọc đánh giá thật, so sánh xếp hạng, lựa chọn tự tin.",
+      "slide2Cta1": "Tìm Phòng Khám",
+      "slide2Cta2": "Đọc Đánh Giá",
+      "slide2Cta3": "So Sánh Giá",
+      "slide3Title": "Hành Trình Nha Khoa\nBắt Đầu Tại Đây",
+      "slide3Subtitle": "Từ lần tư vấn đầu tiên đến lịch hẹn cuối cùng — chúng tôi đồng hành mỗi bước.",
+      "slide3Cta1": "Yêu Cầu Báo Giá",
+      "slide3Cta2": "Xem Nhận Xét",
+      "slide3Cta3": "Liên Hệ Hỗ Trợ"
     },
     "stats": {
       "savings": "Tiết Kiệm TB",
@@ -52,6 +62,16 @@
       "reviewsValue": "2.000+",
       "satisfaction": "Hài Lòng",
       "satisfactionValue": "98%"
+    },
+    "trustBadges": {
+      "verified": "Phòng Khám Xác Minh",
+      "verifiedDesc": "Mỗi phòng khám được đội ngũ thẩm định",
+      "response": "Phản Hồi 24h",
+      "responseDesc": "Nhận báo giá trong vòng 24 giờ",
+      "transparent": "Không Phí Ẩn",
+      "transparentDesc": "Cam kết giá minh bạch",
+      "secure": "Bảo Mật & Riêng Tư",
+      "secureDesc": "Dữ liệu được mã hóa & bảo vệ"
     },
     "howItWorks": {
       "title": "Cách Hoạt Động",
@@ -109,10 +129,8 @@
     "services": "Dịch Vụ",
     "clinicDirectory": "Danh Sách Phòng Khám",
     "freeConsultation": "Tư Vấn Miễn Phí",
-    "costCalculator": "Tính Chi Phí",
     "resources": "Tài Nguyên",
     "howItWorks": "Cách Hoạt Động",
-    "dentalGuide": "Hướng Dẫn Du Lịch Nha Khoa",
     "faq": "Câu Hỏi Thường Gặp",
     "contact": "Liên Hệ",
     "email": "Email",
@@ -165,7 +183,18 @@
     "cityHanoi": "Hà Nội",
     "cityHCM": "TP.HCM",
     "cityDaNang": "Đà Nẵng",
-    "bookAppointment": "Đặt lịch"
+    "bookAppointment": "Đặt lịch",
+    "pricingServices": {
+      "consultation": "Tư vấn",
+      "implant": "Cấy ghép Implant",
+      "crown": "Bọc răng sứ",
+      "veneer": "Dán sứ Veneer",
+      "braces": "Niềng răng",
+      "whitening": "Tẩy trắng răng",
+      "cleaning": "Cạo vôi răng",
+      "rootCanal": "Điều trị tủy"
+    },
+    "free": "Miễn phí"
   },
   "consultation": {
     "title": "Yêu Cầu Tư Vấn Miễn Phí",
@@ -203,7 +232,11 @@
     "progressReviewing": "Đang Xem Xét",
     "progressQuoted": "Đã Báo Giá",
     "progressBooked": "Đã Đặt Lịch",
-    "viewDetails": "Xem Chi Tiết"
+    "viewDetails": "Xem Chi Tiết",
+    "detailsTitle": "Chi Tiết Tư Vấn",
+    "requestInfo": "Thông Tin Yêu Cầu",
+    "submittedDate": "Ngày Gửi",
+    "uploadedImages": "Hình Ảnh Đã Tải"
   },
   "review": {
     "verified": "VK Đã Xác Minh",

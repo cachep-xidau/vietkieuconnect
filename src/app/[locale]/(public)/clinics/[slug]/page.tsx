@@ -62,6 +62,41 @@ export default async function ClinicProfilePage({
 
   return (
     <div className="min-h-screen bg-bg-primary">
+      {/* Photo Gallery Header */}
+      <div className="relative w-full h-64 md:h-80 overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20">
+        {clinic.photos && clinic.photos.length > 0 ? (
+          <div className="h-full grid grid-cols-1 md:grid-cols-3 gap-1">
+            <div className="md:col-span-2 h-full relative">
+              <img
+                src={clinic.photos[0]}
+                alt={clinic.name}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            {clinic.photos.length > 1 && (
+              <div className="hidden md:grid grid-rows-2 gap-1">
+                {clinic.photos.slice(1, 3).map((photo, idx) => (
+                  <div key={idx} className="relative overflow-hidden">
+                    <img
+                      src={photo}
+                      alt={`${clinic.name} ${idx + 2}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        ) : (
+          <img
+            src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2068&auto=format&fit=crop"
+            alt={clinic.name}
+            className="w-full h-full object-cover opacity-70"
+          />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="space-y-8">
           <Card className="p-6">
@@ -155,17 +190,44 @@ export default async function ClinicProfilePage({
                 {t("pricing")}
               </h2>
               <div className="space-y-2">
-                {Object.entries(pricing).map(([service, price]) => (
-                  <div
-                    key={service}
-                    className="flex justify-between items-center py-2 border-b border-border last:border-0"
-                  >
-                    <span className="text-text-secondary">{service}</span>
-                    <span className="font-semibold text-text-primary">
-                      ${price.toLocaleString()}
-                    </span>
-                  </div>
-                ))}
+                {Object.entries(pricing).map(([service, price]) => {
+                  // Normalize service key to lowercase for translation lookup
+                  const serviceKey = service.toLowerCase().replace(/\s+/g, ""); // basic normalization
+                  // Try to find translation, fallback to original service name
+                  // Note: naive check, ideally we use t.has() but simple key construction is safer here
+                  // We map specific known keys in en.json/vi.json
+                  let serviceLabel = service;
+                  if (
+                    [
+                      "consultation",
+                      "implant",
+                      "crown",
+                      "veneer",
+                      "braces",
+                      "whitening",
+                      "cleaning",
+                      "rootcanal",
+                    ].includes(serviceKey)
+                  ) {
+                    serviceLabel = t(`pricingServices.${serviceKey}`);
+                  } else if (serviceKey === "dentalimplant") {
+                    serviceLabel = t("pricingServices.implant");
+                  } else if (serviceKey === "porcelaincrown") {
+                    serviceLabel = t("pricingServices.crown");
+                  }
+
+                  return (
+                    <div
+                      key={service}
+                      className="flex justify-between items-center py-2 border-b border-border last:border-0"
+                    >
+                      <span className="text-text-secondary">{serviceLabel}</span>
+                      <span className="font-semibold text-text-primary">
+                        {price === 0 ? t("free") : `$${price.toLocaleString()}`}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             </Card>
           )}

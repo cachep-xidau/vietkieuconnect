@@ -31,7 +31,7 @@ export function RatingStars({
       </div>
       <span className="text-sm text-text-secondary">
         {rating.toFixed(1)}
-        {reviewCount !== undefined && ` (${reviewCount})`}
+        {reviewCount !== undefined && reviewCount > 0 && ` (${reviewCount})`}
       </span>
     </div>
   );

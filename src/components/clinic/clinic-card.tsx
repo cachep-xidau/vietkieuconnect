@@ -20,9 +20,22 @@ function getGoogleMapsUrl(address: string, city: string): string {
   return `https://www.google.com/maps/search/?api=1&query=${query}`;
 }
 
+function normalizeCityName(city: string, locale: string): string {
+  const cityLower = city.toLowerCase();
+  if (locale === "vi") {
+    if (cityLower === "ho chi minh" || cityLower === "ho chi minh city" || cityLower === "hcmc") return "TP.HCM";
+    if (cityLower === "hanoi" || cityLower === "ha noi") return "Hà Nội";
+  } else {
+    if (cityLower === "tp.hcm" || cityLower === "tp hcm") return "Ho Chi Minh";
+    if (cityLower === "hà nội") return "Hanoi";
+  }
+  return city;
+}
+
 export function ClinicCard({ clinic, locale }: ClinicCardProps) {
   const t = useTranslations("clinic");
   const mainPhoto = clinic.photos[0];
+  const displayCity = normalizeCityName(clinic.city, locale);
   const services = Array.isArray(clinic.services)
     ? (clinic.services as string[])
     : [];
@@ -38,9 +51,11 @@ export function ClinicCard({ clinic, locale }: ClinicCardProps) {
               className="w-full h-full object-cover"
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center text-text-secondary">
-              {clinic.name[0]}
-            </div>
+            <img
+              src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=800&auto=format&fit=crop"
+              alt={clinic.name}
+              className="w-full h-full object-cover opacity-80"
+            />
           )}
           <div className="absolute top-3 right-3">
             <SavingsBadge savings={t("savings", { amount: "60-80%" })} />
@@ -53,7 +68,7 @@ export function ClinicCard({ clinic, locale }: ClinicCardProps) {
               <h3 className="font-semibold text-lg text-text-primary truncate">
                 {clinic.name}
               </h3>
-              <p className="text-sm text-text-secondary">{clinic.city}</p>
+              <p className="text-sm text-text-secondary">{displayCity}</p>
             </div>
             {clinic.verified && (
               <div className="flex items-center gap-1 text-primary flex-shrink-0">

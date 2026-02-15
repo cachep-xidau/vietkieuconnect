@@ -36,7 +36,7 @@ export function StatCard({
             <p className="text-sm font-medium text-muted-foreground mb-2">
               {label}
             </p>
-            <p className="text-3xl font-bold mb-1">{value}</p>
+            <p className={cn("font-bold mb-1", typeof value === "string" && value.length > 12 ? "text-lg" : "text-3xl")}>{value}</p>
             {trend && (
               <p className="text-xs text-muted-foreground">{trend}</p>
             )}

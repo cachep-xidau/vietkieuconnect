@@ -29,7 +29,7 @@ export function HowItWorksSection() {
   ];
 
   return (
-    <section className="bg-bg-primary py-16 md:py-24">
+    <section className="bg-bg-primary py-10 md:py-16">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="mb-12 text-center">

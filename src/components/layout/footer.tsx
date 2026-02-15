@@ -78,14 +78,7 @@ export function Footer() {
                   {t("freeConsultation")}
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/calculator"
-                  className="text-sm text-stone-600 transition-colors hover:text-primary"
-                >
-                  {t("costCalculator")}
-                </Link>
-              </li>
+
             </ul>
           </div>
 
@@ -103,14 +96,7 @@ export function Footer() {
                   {t("howItWorks")}
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/guide"
-                  className="text-sm text-stone-600 transition-colors hover:text-primary"
-                >
-                  {t("dentalGuide")}
-                </Link>
-              </li>
+
               <li>
                 <Link
                   href="/faq"
