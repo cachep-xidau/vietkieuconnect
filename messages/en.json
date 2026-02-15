@@ -359,6 +359,14 @@
     "trending": "Trending",
     "noneScheduled": "None scheduled"
   },
+  "chat": {
+    "title": "Chat with a Consultant",
+    "subtitle": "Choose your preferred channel",
+    "whatsapp": "WhatsApp",
+    "zalo": "Zalo",
+    "facebook": "Messenger",
+    "email": "Email Us"
+  },
   "auth": {
     "loginTitle": "Sign In",
     "registerTitle": "Create Account",

@@ -363,6 +363,14 @@
     "trending": "Phổ biến",
     "noneScheduled": "Chưa có lịch hẹn"
   },
+  "chat": {
+    "title": "Chat với Tư Vấn Viên",
+    "subtitle": "Chọn kênh liên lạc bạn muốn",
+    "whatsapp": "WhatsApp",
+    "zalo": "Zalo",
+    "facebook": "Messenger",
+    "email": "Gửi Email"
+  },
   "auth": {
     "loginTitle": "Đăng Nhập",
     "registerTitle": "Tạo Tài Khoản",
