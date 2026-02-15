@@ -2,7 +2,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "@/i18n/routing";
 import {
   PlusCircle,
-  MessageSquareText,
+  CalendarDays,
+  ClipboardList,
   User,
   type LucideIcon,
 } from "lucide-react";
@@ -25,18 +26,25 @@ const actions: QuickAction[] = [
     color: "text-primary",
   },
   {
-    href: "/consultations",
-    labelKey: "myConsultations",
-    descKey: "activeConsultations",
-    icon: MessageSquareText,
-    color: "text-blue-500",
-  },
-  {
     href: "/profile",
     labelKey: "viewProfile",
     descKey: "manageAccount",
     icon: User,
     color: "text-purple-500",
+  },
+  {
+    href: "/consultations",
+    labelKey: "consultationHistory",
+    descKey: "consultationHistoryDesc",
+    icon: ClipboardList,
+    color: "text-blue-500",
+  },
+  {
+    href: "/bookings",
+    labelKey: "myBookings",
+    descKey: "upcomingBookings",
+    icon: CalendarDays,
+    color: "text-green-500",
   },
 ];
 
@@ -46,7 +54,7 @@ export async function QuickActions() {
   return (
     <section className="mb-8">
       <h2 className="text-xl font-semibold mb-4">{t("quickActions")}</h2>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {actions.map((action) => {
           const Icon = action.icon;
           return (

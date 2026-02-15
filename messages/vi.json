@@ -351,6 +351,8 @@
     "viewAllBookings": "Xem Tất Cả Lịch Hẹn",
     "viewProfile": "Xem Hồ Sơ",
     "myConsultations": "Tra Cứu Tư Vấn",
+    "consultationHistory": "Lịch Sử Yêu Cầu",
+    "consultationHistoryDesc": "Xem lại các yêu cầu đã gửi",
     "myBookings": "Lịch Hẹn",
     "manageAccount": "Quản lý tài khoản",
     "matchScore": "Phù hợp {score}%",

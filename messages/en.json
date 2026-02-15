@@ -347,6 +347,8 @@
     "viewAllBookings": "View All Bookings",
     "viewProfile": "View Profile",
     "myConsultations": "My Consultations",
+    "consultationHistory": "Consultation History",
+    "consultationHistoryDesc": "View your past requests",
     "myBookings": "My Bookings",
     "manageAccount": "Manage your account",
     "matchScore": "{score}% match",
