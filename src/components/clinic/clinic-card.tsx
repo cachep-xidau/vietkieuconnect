@@ -5,7 +5,6 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { RatingStars } from "./rating-stars";
-import { SavingsBadge } from "./savings-badge";
 import { ShieldCheck, MapPin, Phone, ExternalLink } from "lucide-react";
 import { ClinicTable } from "@/types/database-clinic-tables";
 import { useTranslations } from "next-intl";
@@ -57,9 +56,6 @@ export function ClinicCard({ clinic, locale }: ClinicCardProps) {
               className="w-full h-full object-cover opacity-80"
             />
           )}
-          <div className="absolute top-3 right-3">
-            <SavingsBadge savings={t("savings", { amount: "60-80%" })} />
-          </div>
         </div>
 
         <div className="p-4 space-y-3">

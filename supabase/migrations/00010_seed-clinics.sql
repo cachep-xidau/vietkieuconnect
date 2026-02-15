@@ -1,6 +1,7 @@
 -- ============================================================
 -- Seed 3 dental clinics: Teennie, Thế Giới Implant, San Dentist
 -- Source: teennie.vn, thegioiimplant.com, sandentist.vn
+-- Photos: crawled from real clinic websites (Feb 2026)
 -- ============================================================
 
 INSERT INTO clinics (
@@ -19,7 +20,7 @@ INSERT INTO clinics (
 
   'Teennie Clinic là nha khoa chuyên sâu niềng răng hiệu quả hàng đầu tại TP.HCM. Thành lập tháng 12/2020, Teennie mang sứ mệnh "Nụ cười rạng rỡ, mở lối tương lai". 100% Bác sĩ tốt nghiệp Đại học Y Dược có tiếng, được đào tạo chuyên sâu niềng răng. Lộ trình điều trị chuẩn y khoa theo Sở Y Tế. Teennie áp dụng phương pháp niềng răng dây thẳng mắc cài kim loại kinh điển — thời gian nhanh, an toàn, chi phí tiết kiệm. Đặc biệt hướng đến các bạn trẻ trong độ tuổi học đường. Bác sĩ tiêu biểu: BS Lưu Ngọc Sáng, BS Lê Huy Thọ, BS Đoàn Thị Minh Tuyền.',
 
-  'TP. Hồ Chí Minh', -- address (exact street not listed on website)
+  'TP. Hồ Chí Minh',
   'Hồ Chí Minh',
   '["Niềng răng mắc cài kim loại", "Niềng răng dây thẳng", "Chỉnh nha chuyên sâu", "Tư vấn niềng răng học đường"]'::jsonb,
   '{"consultation": "Miễn phí", "braces": "Liên hệ"}'::jsonb,
@@ -54,7 +55,11 @@ INSERT INTO clinics (
   NULL,
   'https://thegioiimplant.com',
   NULL,
-  ARRAY[]::text[],
+  ARRAY[
+    'https://thegioiimplant.com/wp-content/uploads/2024/07/dia-chi-trong-rang-implant-uy-tin-15-1.jpg',
+    'https://thegioiimplant.com/wp-content/uploads/2024/05/Bac-si-Vo-Ta-Dung.jpg',
+    'https://thegioiimplant.com/wp-content/uploads/2024/05/Ba-Sau-Thia-la-mot-trong-nhung-ca-phuc-hinh-Implant-sieu-kho.jpg'
+  ],
   true,
   true,
   4.9,
@@ -78,7 +83,11 @@ INSERT INTO clinics (
   NULL,
   'https://sandentist.vn',
   NULL,
-  ARRAY[]::text[],
+  ARRAY[
+    'https://sandentist.vn/wp-content/uploads/2024/06/co-so-vat-chat-nha-khoa-san-dentist-2.jpg',
+    'https://sandentist.vn/wp-content/uploads/2024/06/co-so-vat-chat-nha-khoa-san-dentist-6.jpg',
+    'https://sandentist.vn/wp-content/uploads/2024/06/co-so-vat-chat-nha-khoa-san-dentist-4.jpg'
+  ],
   true,
   true,
   4.7,
