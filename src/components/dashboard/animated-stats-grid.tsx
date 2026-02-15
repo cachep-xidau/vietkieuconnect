@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { StatCard } from "./stat-card";
-import { DollarSign, ClipboardList, Calendar, Bell } from "lucide-react";
+import { ClipboardList, Calendar } from "lucide-react";
 import { useTranslations } from "next-intl";
 import type { DashboardStats } from "@/lib/mock-data/dashboard-types";
 
@@ -15,13 +15,6 @@ export function AnimatedStatsGrid({ stats }: AnimatedStatsGridProps) {
 
   const statCards = [
     {
-      icon: <DollarSign className="h-5 w-5" />,
-      label: t("totalSaved"),
-      value: `$${stats.totalSaved.toLocaleString()}`,
-      trend: stats.totalSavedTrend,
-      variant: "green" as const
-    },
-    {
       icon: <ClipboardList className="h-5 w-5" />,
       label: t("activeConsultations"),
       value: stats.activeConsultations,
@@ -33,19 +26,10 @@ export function AnimatedStatsGrid({ stats }: AnimatedStatsGridProps) {
       value: stats.bookings,
       variant: "amber" as const
     },
-    {
-      icon: <Bell className="h-5 w-5" />,
-      label: t("nextAppointment"),
-      value: stats.nextAppointment?.date
-        ? new Date(stats.nextAppointment.date).toLocaleDateString()
-        : t("noneScheduled"),
-      subtitle: stats.nextAppointment?.clinic,
-      variant: "purple" as const
-    }
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
       {statCards.map((card, index) => (
         <motion.div
           key={index}

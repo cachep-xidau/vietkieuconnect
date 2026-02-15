@@ -1,19 +1,13 @@
 import { getConsultations } from "@/lib/actions/consultation-actions";
 import { getBookings } from "@/lib/actions/booking-actions";
 import { createClient } from "@/lib/supabase/server";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
-import { Calendar, ClipboardList, Building2, Plus, DollarSign, Bell } from "lucide-react";
-import { Link } from "@/i18n/routing";
 import { AnimatedStatsGrid } from "@/components/dashboard/animated-stats-grid";
 import { Timeline } from "@/components/dashboard/timeline";
-import { ClinicRecommendationCard, TreatmentRecommendationCard } from "@/components/dashboard/recommendation-card";
 import { QuickActions } from "@/components/dashboard/quick-actions";
 import { FabConsultation } from "@/components/dashboard/fab-consultation";
-import { mockActivities, mockRecommendations } from "@/lib/mock-data/dashboard";
+import { mockActivities } from "@/lib/mock-data/dashboard";
 import type { DashboardStats } from "@/lib/mock-data/dashboard-types";
 
 export default async function DashboardPage() {
@@ -43,7 +37,6 @@ export default async function DashboardPage() {
 
   const userName = profile?.full_name || user.email?.split("@")[0] || "User";
 
-  // Compute real dashboard stats
   const realStats: DashboardStats = {
     totalSaved: 0,
     totalSavedTrend: "",
@@ -54,7 +47,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      {/* Hero Section */}
+      {/* Welcome */}
       <div className="space-y-2 mb-8">
         <h1 className="text-4xl font-bold truncate">
           👋 {t("dashboard.welcome", { name: userName })}
@@ -64,55 +57,19 @@ export default async function DashboardPage() {
         </p>
       </div>
 
-      {/* Stats Grid with animations */}
+      {/* Stats */}
       <AnimatedStatsGrid stats={realStats} />
 
       {/* Quick Actions */}
       <QuickActions />
 
-      {/* Timeline + Recommendations Grid */}
-      <div className="grid lg:grid-cols-5 gap-6">
-        {/* Activity Timeline (60% - 3 columns) */}
-        <div className="lg:col-span-3">
-          <h2 className="text-2xl font-bold mb-4">{t("dashboard.activityTimeline")}</h2>
-          <Timeline activities={mockActivities} />
-        </div>
-
-        {/* Recommendations Sidebar (40% - 2 columns) */}
-        <div className="lg:col-span-2 space-y-6">
-          {/* Top Clinics */}
-          <div>
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold">{t("dashboard.topRatedClinics")}</h3>
-              <Link href="/clinics" className="text-sm text-primary hover:underline">
-                {t("dashboard.viewAll")}
-              </Link>
-            </div>
-            <div className="space-y-3">
-              {mockRecommendations.clinics.slice(0, 3).map((clinic) => (
-                <ClinicRecommendationCard key={clinic.id} clinic={clinic} />
-              ))}
-            </div>
-          </div>
-
-          {/* Trending Treatments */}
-          <div>
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold">{t("dashboard.trendingTreatments")}</h3>
-              <Link href="/treatments" className="text-sm text-primary hover:underline">
-                {t("dashboard.viewAll")}
-              </Link>
-            </div>
-            <div className="space-y-3">
-              {mockRecommendations.treatments.map((treatment, index) => (
-                <TreatmentRecommendationCard key={index} treatment={treatment} />
-              ))}
-            </div>
-          </div>
-        </div>
+      {/* Activity Timeline — Full Width */}
+      <div>
+        <h2 className="text-2xl font-bold mb-4">{t("dashboard.activityTimeline")}</h2>
+        <Timeline activities={mockActivities} />
       </div>
 
-      {/* FAB - Desktop Only */}
+      {/* FAB */}
       <FabConsultation />
     </div>
   );
