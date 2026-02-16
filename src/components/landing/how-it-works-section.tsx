@@ -42,14 +42,14 @@ export function HowItWorksSection() {
         </div>
 
         {/* Steps Grid/Scroll */}
-        <div className="relative">
+        <div className="relative overflow-hidden">
           <div className="flex gap-4 overflow-x-auto pb-4 md:grid md:gap-8 md:grid-cols-3 md:pb-0 snap-x snap-mandatory scrollbar-hide">
             {steps.map((step) => {
               const Icon = step.icon;
               return (
                 <Card
                   key={step.number}
-                  className="min-w-[240px] max-w-[85vw] snap-center relative overflow-hidden border-border bg-bg-card transition-shadow hover:shadow-md md:min-w-0 md:max-w-none"
+                  className="w-[75vw] flex-shrink-0 snap-center relative overflow-hidden border-border bg-bg-card transition-shadow hover:shadow-md md:w-auto md:flex-shrink md:min-w-0"
                 >
                   <CardContent className="p-6">
                     {/* Step Number Badge */}
