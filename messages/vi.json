@@ -135,6 +135,9 @@
     "contact": "Liên Hệ",
     "email": "Email",
     "support": "Hỗ Trợ",
+    "terms": "Điều Khoản Sử Dụng",
+    "privacy": "Chính Sách Bảo Mật",
+    "disclaimer": "Miễn Trừ Trách Nhiệm Y Tế",
     "copyright": "© {year} VietKieuConnect. Bảo lưu mọi quyền."
   },
   "clinic": {
@@ -537,5 +540,54 @@
     "notAuthSignin": "(không phải /auth/signin)",
     "notConsultation": "(không phải /consultation)",
     "consultationsList": "để xem danh sách tư vấn"
+  },
+  "legal": {
+    "terms": {
+      "title": "Điều Khoản Sử Dụng",
+      "lastUpdated": "Cập nhật lần cuối: Tháng 2/2026",
+      "s1Title": "1. Về VietKieuConnect",
+      "s1Body": "VietKieuConnect là nền tảng kết nối du lịch nha khoa, giúp Việt Kiều tìm phòng khám nha khoa uy tín tại Việt Nam. Chúng tôi đóng vai trò trung gian — KHÔNG cung cấp dịch vụ khám, chẩn đoán, hay điều trị y tế. Tất cả dịch vụ lâm sàng được thực hiện trực tiếp bởi các phòng khám đối tác trên nền tảng.",
+      "s2Title": "2. Vai Trò & Giới Hạn Của Nền Tảng",
+      "s2Body": "VietKieuConnect chỉ đóng vai trò hỗ trợ kết nối. Chúng tôi cung cấp thông tin chung về phòng khám, hỗ trợ đặt lịch hẹn và kênh liên lạc. Chúng tôi không đảm bảo kết quả điều trị, tình trạng sẵn sàng của phòng khám, hay tính chính xác của thông tin giá cả từ bên thứ ba. Người dùng có trách nhiệm xác minh thông tin trực tiếp với nhà cung cấp.",
+      "s3Title": "3. Trách Nhiệm Người Dùng",
+      "s3Body": "Khi sử dụng VietKieuConnect, bạn đồng ý rằng: (a) bạn sẽ xác minh mọi thông tin y tế với nha sĩ chuyên môn; (b) bạn hiểu kết quả điều trị nha khoa khác nhau tùy người; (c) bạn cung cấp thông tin cá nhân và sức khỏe chính xác khi yêu cầu tư vấn; (d) bạn hiểu VietKieuConnect không chịu trách nhiệm về chất lượng, an toàn hay kết quả điều trị từ phòng khám đối tác.",
+      "s4Title": "4. Giới Hạn Trách Nhiệm",
+      "s4Body": "VietKieuConnect, các nhân viên và đại diện không chịu trách nhiệm về bất kỳ thiệt hại trực tiếp, gián tiếp hay hệ quả phát sinh từ: điều trị nha khoa tại phòng khám đối tác, sự cố liên quan đến di chuyển, lỗi truyền thông, hay việc dựa vào thông tin trên nền tảng. Trách nhiệm tổng thể giới hạn ở phí dịch vụ kết nối đã thanh toán.",
+      "s5Title": "5. Sở Hữu Trí Tuệ",
+      "s5Body": "Toàn bộ nội dung trên VietKieuConnect, bao gồm văn bản, hình ảnh, logo và phần mềm, thuộc sở hữu của VietKieuConnect và được bảo vệ bởi luật bản quyền quốc tế. Cấm sao chép hoặc phân phối trái phép.",
+      "s6Title": "6. Thay Đổi Điều Khoản",
+      "s6Body": "Chúng tôi có quyền cập nhật Điều Khoản Sử Dụng bất cứ lúc nào. Thay đổi sẽ được đăng trên trang này với ngày cập nhật mới. Việc tiếp tục sử dụng nền tảng đồng nghĩa với chấp nhận điều khoản đã chỉnh sửa."
+    },
+    "privacy": {
+      "title": "Chính Sách Bảo Mật",
+      "lastUpdated": "Cập nhật lần cuối: Tháng 2/2026",
+      "s1Title": "1. Thông Tin Chúng Tôi Thu Thập",
+      "s1Body": "Chúng tôi thu thập thông tin bạn cung cấp trực tiếp như tên, email, số điện thoại và nhu cầu tư vấn. Chúng tôi KHÔNG thu thập, lưu trữ hay xử lý Thông Tin Sức Khỏe Được Bảo Vệ (PHI) như hồ sơ bệnh án, phim X-quang hay tiền sử điều trị. Mọi trao đổi y tế diễn ra trực tiếp giữa bạn và phòng khám qua kênh bên thứ ba (WhatsApp, Zalo, v.v).",
+      "s2Title": "2. Cách Sử Dụng Thông Tin",
+      "s2Body": "Thông tin của bạn được sử dụng để: (a) hỗ trợ tư vấn và đặt lịch phòng khám; (b) gửi cập nhật về nền tảng; (c) cải thiện dịch vụ; (d) tuân thủ nghĩa vụ pháp lý. Chúng tôi không bán, cho thuê hay chia sẻ dữ liệu cá nhân cho bên thứ ba vì mục đích tiếp thị.",
+      "s3Title": "3. Bảo Mật Dữ Liệu",
+      "s3Body": "Chúng tôi áp dụng các biện pháp bảo mật tiêu chuẩn ngành bao gồm mã hóa khi truyền và lưu trữ, kiểm soát truy cập, và kiểm tra bảo mật định kỳ. Tuy nhiên, không có truyền tải internet nào an toàn tuyệt đối.",
+      "s4Title": "4. Dịch Vụ Bên Thứ Ba",
+      "s4Body": "Nền tảng có thể chứa liên kết đến website và dịch vụ bên thứ ba (website phòng khám, WhatsApp, Zalo, Facebook). Chúng tôi không chịu trách nhiệm về thực hành bảo mật của các dịch vụ bên ngoài. Chúng tôi khuyến khích bạn xem xét chính sách bảo mật của họ.",
+      "s5Title": "5. Quyền Của Bạn",
+      "s5Body": "Bạn có quyền: (a) truy cập dữ liệu cá nhân; (b) yêu cầu sửa dữ liệu không chính xác; (c) yêu cầu xóa dữ liệu; (d) rút đồng ý xử lý dữ liệu. Để thực hiện quyền này, liên hệ support@vietkieuconnect.com."
+    },
+    "disclaimer": {
+      "title": "Miễn Trừ Trách Nhiệm Y Tế",
+      "lastUpdated": "Cập nhật lần cuối: Tháng 2/2026",
+      "highlight": "VietKieuConnect KHÔNG phải nhà cung cấp dịch vụ y tế. Chúng tôi không cung cấp tư vấn y tế, chẩn đoán hay khuyến nghị điều trị. Luôn tham khảo ý kiến nha sĩ chuyên môn để được tư vấn cá nhân.",
+      "s1Title": "1. Không Phải Tư Vấn Y Tế",
+      "s1Body": "Mọi thông tin trên VietKieuConnect — bao gồm mô tả phòng khám, danh sách dịch vụ, thông tin điều trị và giá cả — chỉ mang tính tham khảo. Thông tin này không phải tư vấn y tế và không nên thay thế cho tư vấn nha khoa chuyên nghiệp. Chúng tôi khuyến nghị tham khảo nha sĩ tại địa phương trước khi đưa ra quyết định điều trị.",
+      "s2Title": "2. Không Có Quan Hệ Bác Sĩ - Bệnh Nhân",
+      "s2Body": "Sử dụng VietKieuConnect không tạo ra quan hệ bác sĩ - bệnh nhân giữa bạn và VietKieuConnect, hay giữa bạn và bất kỳ phòng khám nào trên nền tảng cho đến khi bạn chính thức đăng ký với phòng khám đó. VietKieuConnect chỉ hỗ trợ kết nối — chúng tôi không tham gia vào quyết định lâm sàng.",
+      "s3Title": "3. Trách Nhiệm Phòng Khám",
+      "s3Body": "Mỗi phòng khám trên VietKieuConnect là nhà cung cấp y tế độc lập với giấy phép, nhân sự và quy trình lâm sàng riêng. VietKieuConnect xác minh thông tin cơ bản nhưng không giám sát, kiểm soát hay đảm bảo chất lượng chăm sóc. Kết quả điều trị, biến chứng và sự hài lòng là trách nhiệm của phòng khám điều trị.",
+      "s4Title": "4. Lưu Ý Về Y Tế Quốc Tế",
+      "s4Body": "Điều trị nha khoa tại Việt Nam có thể khác với tiêu chuẩn tại quốc gia của bạn. Khung pháp lý, vật liệu sử dụng và thực hành lâm sàng có thể khác biệt. Bệnh nhân nên tìm hiểu trước khi tiến hành. VietKieuConnect không chịu trách nhiệm về bất kỳ hậu quả bất lợi nào từ điều trị nha khoa quốc tế."
+    },
+    "disclaimerBanner": {
+      "text": "VietKieuConnect là nền tảng kết nối du lịch nha khoa, không phải nhà cung cấp dịch vụ y tế. Thông tin trên trang chỉ mang tính tham khảo.",
+      "learnMore": "Tìm hiểu thêm"
+    }
   }
 }

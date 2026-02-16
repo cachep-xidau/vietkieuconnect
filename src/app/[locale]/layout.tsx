@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/footer";
 import { BottomTabBar } from "@/components/layout/bottom-tab-bar";
 import { Toaster } from "@/components/ui/sonner";
 import { ChatChannelWidget } from "@/components/chat/chat-channel-widget";
+import { DisclaimerBanner } from "@/components/layout/disclaimer-banner";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -56,6 +57,7 @@ export default async function LocaleLayout({
       </div>
       <Toaster />
       <ChatChannelWidget />
+      <DisclaimerBanner />
     </NextIntlClientProvider>
   );
 }

@@ -134,8 +134,21 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-8 border-t border-border pt-8 text-center">
+        {/* Legal + Copyright */}
+        <div className="mt-8 border-t border-border pt-8 text-center space-y-2">
+          <div className="flex justify-center gap-4 text-xs">
+            <Link href="/terms" className="text-text-secondary hover:text-primary transition-colors">
+              {t("terms")}
+            </Link>
+            <span className="text-text-secondary">·</span>
+            <Link href="/privacy" className="text-text-secondary hover:text-primary transition-colors">
+              {t("privacy")}
+            </Link>
+            <span className="text-text-secondary">·</span>
+            <Link href="/disclaimer" className="text-text-secondary hover:text-primary transition-colors">
+              {t("disclaimer")}
+            </Link>
+          </div>
           <p className="text-sm text-text-secondary">
             {t("copyright", { year: currentYear })}
           </p>

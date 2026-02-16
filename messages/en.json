@@ -135,6 +135,9 @@
     "contact": "Contact",
     "email": "Email Us",
     "support": "Support",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "disclaimer": "Medical Disclaimer",
     "copyright": "© {year} VietKieuConnect. All rights reserved."
   },
   "clinic": {
@@ -533,5 +536,54 @@
     "notAuthSignin": "(not /auth/signin)",
     "notConsultation": "(not /consultation)",
     "consultationsList": "for consultations list"
+  },
+  "legal": {
+    "terms": {
+      "title": "Terms of Service",
+      "lastUpdated": "Last updated: February 2026",
+      "s1Title": "1. About VietKieuConnect",
+      "s1Body": "VietKieuConnect is a dental tourism facilitation platform that connects overseas Vietnamese (Việt Kiều) with verified dental clinics in Vietnam. We act as an intermediary — we do NOT provide medical examinations, diagnoses, or treatments. All clinical services are provided directly by the partner clinics listed on our platform.",
+      "s2Title": "2. Platform Role & Limitations",
+      "s2Body": "VietKieuConnect serves as a facilitator only. We provide general information about dental clinics, help coordinate appointments, and offer communication channels. We do not guarantee treatment outcomes, clinic availability, or the accuracy of pricing information provided by third-party clinics. Users are responsible for verifying all clinical information directly with their chosen provider.",
+      "s3Title": "3. User Responsibilities",
+      "s3Body": "By using VietKieuConnect, you agree that: (a) you will verify all medical information independently with qualified dental professionals; (b) you acknowledge that dental treatment outcomes vary by individual; (c) you will provide accurate personal and health information when requesting consultations; (d) you understand that VietKieuConnect is not liable for the quality, safety, or outcome of any treatment performed by partner clinics.",
+      "s4Title": "4. Limitation of Liability",
+      "s4Body": "VietKieuConnect, its officers, employees, and agents shall not be held liable for any direct, indirect, incidental, or consequential damages arising from: dental treatments performed by partner clinics, travel-related incidents, communication errors, or reliance on information published on this platform. Our total liability is limited to the coordination fees paid by the user.",
+      "s5Title": "5. Intellectual Property",
+      "s5Body": "All content on VietKieuConnect, including text, graphics, logos, and software, is the property of VietKieuConnect or its content suppliers and is protected by international copyright laws. Unauthorized reproduction or distribution is prohibited.",
+      "s6Title": "6. Changes to These Terms",
+      "s6Body": "We reserve the right to update these Terms of Service at any time. Changes will be posted on this page with an updated revision date. Continued use of the platform after changes constitutes acceptance of the revised terms."
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "lastUpdated": "Last updated: February 2026",
+      "s1Title": "1. Information We Collect",
+      "s1Body": "We collect information you provide directly, such as your name, email address, phone number, and consultation preferences. We do NOT collect, store, or process Protected Health Information (PHI) such as medical records, X-rays, or treatment history. All medical communications occur directly between you and the dental clinic through third-party channels (WhatsApp, Zalo, etc.).",
+      "s2Title": "2. How We Use Your Information",
+      "s2Body": "Your information is used to: (a) facilitate clinic consultations and appointments; (b) communicate platform updates; (c) improve our services; (d) comply with legal obligations. We do not sell, rent, or share your personal data with third parties for marketing purposes.",
+      "s3Title": "3. Data Security",
+      "s3Body": "We implement industry-standard security measures to protect your personal data, including encryption in transit and at rest, access controls, and regular security audits. However, no internet transmission is 100% secure, and we cannot guarantee absolute security.",
+      "s4Title": "4. Third-Party Services",
+      "s4Body": "Our platform may contain links to third-party websites and services (clinic websites, WhatsApp, Zalo, Facebook). We are not responsible for the privacy practices of these external services. We encourage you to review their privacy policies before sharing personal information.",
+      "s5Title": "5. Your Rights",
+      "s5Body": "You have the right to: (a) access your personal data; (b) request correction of inaccurate data; (c) request deletion of your data; (d) withdraw consent for data processing. To exercise these rights, contact us at support@vietkieuconnect.com."
+    },
+    "disclaimer": {
+      "title": "Medical Disclaimer",
+      "lastUpdated": "Last updated: February 2026",
+      "highlight": "VietKieuConnect is NOT a healthcare provider. We do not provide medical advice, diagnoses, or treatment recommendations. Always consult with a qualified dental professional for personalized medical advice.",
+      "s1Title": "1. Not Medical Advice",
+      "s1Body": "All information provided on VietKieuConnect — including clinic descriptions, service listings, treatment information, and pricing — is for general informational purposes only. This information does not constitute medical advice and should not be relied upon as a substitute for professional dental consultation. We strongly recommend consulting with your local dentist before making any treatment decisions.",
+      "s2Title": "2. No Provider-Patient Relationship",
+      "s2Body": "Using VietKieuConnect does not create a provider-patient relationship between you and VietKieuConnect, or between you and any clinic listed on our platform until you formally engage with that clinic. VietKieuConnect is a facilitator that helps connect you with dental clinics — we do not participate in clinical decisions.",
+      "s3Title": "3. Clinic Responsibility",
+      "s3Body": "Each dental clinic listed on VietKieuConnect is an independent healthcare provider with its own licenses, staff, and clinical protocols. VietKieuConnect verifies basic credentials but does not supervise, control, or guarantee the quality of care provided. Treatment outcomes, complications, and patient satisfaction are the sole responsibility of the treating clinic.",
+      "s4Title": "4. International Healthcare Considerations",
+      "s4Body": "Dental treatment in Vietnam may differ from standards in your home country. Regulatory frameworks, materials used, and clinical practices may vary. Patients should research and understand these differences before proceeding. VietKieuConnect is not liable for any adverse outcomes arising from international dental treatment."
+    },
+    "disclaimerBanner": {
+      "text": "VietKieuConnect is a dental tourism facilitator, not a healthcare provider. Information on this site is for reference only.",
+      "learnMore": "Learn more"
+    }
   }
 }

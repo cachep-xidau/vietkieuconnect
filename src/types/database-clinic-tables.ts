@@ -18,6 +18,11 @@ export interface ClinicTable {
     website: string | null;
     verified: boolean;
     active: boolean;
+    license_number: string | null;
+    license_authority: string | null;
+    license_expiry: string | null;
+    medical_director: string | null;
+    medical_director_license: string | null;
     created_at: string;
     updated_at: string;
   };
@@ -40,6 +45,11 @@ export interface ClinicTable {
     website?: string | null;
     verified?: boolean;
     active?: boolean;
+    license_number?: string | null;
+    license_authority?: string | null;
+    license_expiry?: string | null;
+    medical_director?: string | null;
+    medical_director_license?: string | null;
     created_at?: string;
     updated_at?: string;
   };
@@ -62,6 +72,11 @@ export interface ClinicTable {
     website?: string | null;
     verified?: boolean;
     active?: boolean;
+    license_number?: string | null;
+    license_authority?: string | null;
+    license_expiry?: string | null;
+    medical_director?: string | null;
+    medical_director_license?: string | null;
     created_at?: string;
     updated_at?: string;
   };

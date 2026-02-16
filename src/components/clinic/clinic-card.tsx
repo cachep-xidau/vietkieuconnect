@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { RatingStars } from "./rating-stars";
+import { LicenseBadge } from "./license-badge";
 import { ShieldCheck, MapPin, Phone, ExternalLink } from "lucide-react";
 import { ClinicTable } from "@/types/database-clinic-tables";
 import { useTranslations } from "next-intl";
@@ -90,6 +91,12 @@ export function ClinicCard({ clinic, locale }: ClinicCardProps) {
           )}
 
           <RatingStars rating={clinic.rating} reviewCount={clinic.review_count} />
+
+          <LicenseBadge
+            medicalDirector={clinic.medical_director}
+            medicalDirectorLicense={clinic.medical_director_license}
+            compact
+          />
 
           <div className="flex flex-wrap gap-1.5">
             {services.slice(0, 3).map((service, idx) => (
