@@ -1,42 +1,19 @@
 "use client";
 
-import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
-import { Star, MapPin } from "lucide-react";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/routing";
+import { ClinicCard } from "@/components/clinic/clinic-card";
+import { ClinicTable } from "@/types/database-clinic-tables";
+import { useLocale } from "next-intl";
 
-export function FeaturedClinicsSection() {
+interface FeaturedClinicsSectionProps {
+  clinics: ClinicTable["Row"][];
+}
+
+export function FeaturedClinicsSection({ clinics }: FeaturedClinicsSectionProps) {
   const t = useTranslations("landing.featuredClinics");
-  const tClinic = useTranslations("clinic");
-
-  const clinics = [
-    {
-      id: 1,
-      name: "Saigon Smile Dental",
-      city: "Ho Chi Minh City",
-      rating: 4.8,
-      reviewCount: 342,
-      services: ["Implants", "Veneers"],
-    },
-    {
-      id: 2,
-      name: "Hanoi International Dental",
-      city: "Hanoi",
-      rating: 4.9,
-      reviewCount: 521,
-      services: ["All Services"],
-    },
-    {
-      id: 3,
-      name: "Da Nang Dental Center",
-      city: "Da Nang",
-      rating: 4.7,
-      reviewCount: 289,
-      services: ["Crowns", "Braces"],
-    },
-  ];
+  const locale = useLocale();
 
   return (
     <section className="bg-bg-subtle py-16 md:py-24">
@@ -51,65 +28,10 @@ export function FeaturedClinicsSection() {
           </p>
         </div>
 
-        {/* Clinics Grid */}
+        {/* Clinics Grid — reuses ClinicCard */}
         <div className="mb-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {clinics.map((clinic) => (
-            <Card
-              key={clinic.id}
-              className="overflow-hidden border-border bg-bg-card transition-shadow hover:shadow-lg"
-            >
-              {/* Placeholder Image Area */}
-              <div className="flex h-48 w-full items-center justify-center bg-gradient-to-br from-primary/10 to-primary/5">
-                <MapPin className="h-12 w-12 text-primary/20" />
-              </div>
-
-              <CardContent className="p-6">
-                {/* Clinic Name */}
-                <h3 className="mb-2 text-xl font-semibold text-text-primary">
-                  {clinic.name}
-                </h3>
-
-                {/* Location */}
-                <div className="mb-3 flex items-center gap-1.5 text-sm text-text-secondary">
-                  <MapPin className="h-4 w-4" />
-                  <span>{clinic.city}</span>
-                </div>
-
-                {/* Rating */}
-                <div className="mb-4 flex items-center gap-2">
-                  <div className="flex items-center gap-1">
-                    <Star className="h-4 w-4 fill-accent text-accent" />
-                    <span className="font-semibold text-text-primary">
-                      {clinic.rating}
-                    </span>
-                  </div>
-                  <span className="text-sm text-text-secondary">
-                    ({clinic.reviewCount} reviews)
-                  </span>
-                </div>
-
-                {/* Services */}
-                <div className="flex flex-wrap gap-2">
-                  {clinic.services.map((service, index) => (
-                    <Badge
-                      key={index}
-                      variant="secondary"
-                      className="bg-primary/10 text-primary hover:bg-primary/20"
-                    >
-                      {service}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-
-              <CardFooter className="border-t border-border bg-bg-subtle p-4">
-                <Button asChild variant="outline" className="w-full">
-                  <Link href={`/clinics/${clinic.id}`}>
-                    {tClinic("viewProfile")}
-                  </Link>
-                </Button>
-              </CardFooter>
-            </Card>
+            <ClinicCard key={clinic.id} clinic={clinic} locale={locale} />
           ))}
         </div>
 
