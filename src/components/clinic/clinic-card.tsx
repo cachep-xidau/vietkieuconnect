@@ -43,7 +43,7 @@ export function ClinicCard({ clinic, locale }: ClinicCardProps) {
   return (
     <Link href={`/clinics/${clinic.slug}`}>
       <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full">
-        <div className="relative h-48 bg-gradient-to-br from-primary/20 to-accent/20">
+        <div className="relative h-36 md:h-48 bg-gradient-to-br from-primary/20 to-accent/20">
           {mainPhoto ? (
             <img
               src={mainPhoto}

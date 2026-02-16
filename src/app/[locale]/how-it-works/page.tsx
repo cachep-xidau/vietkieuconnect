@@ -49,10 +49,10 @@ export default function HowItWorksPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary/10 via-primary/5 to-transparent py-16 md:py-24">
+      <section className="bg-gradient-to-br from-primary/10 via-primary/5 to-transparent py-10 md:py-24">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="mb-4 text-4xl font-bold text-text-primary md:text-5xl">
+            <h1 className="mb-4 text-3xl font-bold text-text-primary md:text-5xl">
               {t("title")}
             </h1>
             <p className="text-lg text-text-secondary md:text-xl">
@@ -63,9 +63,9 @@ export default function HowItWorksPage() {
       </section>
 
       {/* Steps Section */}
-      <section className="py-16 md:py-24">
+      <section className="py-8 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-5xl space-y-16">
+          <div className="mx-auto max-w-5xl space-y-8 md:space-y-16">
             {steps.map((step, index) => {
               const Icon = step.icon;
               const isEven = index % 2 === 0;
@@ -73,17 +73,16 @@ export default function HowItWorksPage() {
               return (
                 <div
                   key={step.number}
-                  className={`flex flex-col gap-8 md:flex-row md:items-center ${
-                    isEven ? "" : "md:flex-row-reverse"
-                  }`}
+                  className={`flex flex-col gap-8 md:flex-row md:items-center ${isEven ? "" : "md:flex-row-reverse"
+                    }`}
                 >
                   {/* Icon Circle */}
                   <div className="flex-shrink-0">
-                    <div className="relative mx-auto flex h-32 w-32 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary-hover shadow-lg md:h-40 md:w-40">
-                      <div className="absolute -top-2 -right-2 flex h-10 w-10 items-center justify-center rounded-full bg-white text-lg font-bold text-primary shadow-md md:h-12 md:w-12">
+                    <div className="relative mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary-hover shadow-lg md:h-40 md:w-40">
+                      <div className="absolute -top-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full bg-white text-sm font-bold text-primary shadow-md md:h-12 md:w-12 md:text-lg">
                         {step.number}
                       </div>
-                      <Icon className="h-16 w-16 text-white md:h-20 md:w-20" />
+                      <Icon className="h-10 w-10 text-white md:h-20 md:w-20" />
                     </div>
                   </div>
 
@@ -117,7 +116,7 @@ export default function HowItWorksPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-primary to-primary-hover py-16 md:py-24">
+      <section className="bg-gradient-to-r from-primary to-primary-hover py-10 md:py-24">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">

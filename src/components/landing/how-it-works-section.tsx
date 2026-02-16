@@ -42,34 +42,38 @@ export function HowItWorksSection() {
         </div>
 
         {/* Steps Grid/Scroll */}
-        <div className="flex gap-4 overflow-x-auto pb-6 md:grid md:gap-8 md:grid-cols-3 md:pb-0 snap-x snap-mandatory">
-          {steps.map((step) => {
-            const Icon = step.icon;
-            return (
-              <Card
-                key={step.number}
-                className="min-w-[280px] snap-center relative overflow-hidden border-border bg-bg-card transition-shadow hover:shadow-md md:min-w-0"
-              >
-                <CardContent className="p-6">
-                  {/* Step Number Badge */}
-                  <div className="mb-4 flex items-center justify-between">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-lg font-bold text-primary">
-                      {step.number}
+        <div className="relative">
+          <div className="flex gap-4 overflow-x-auto pb-4 md:grid md:gap-8 md:grid-cols-3 md:pb-0 snap-x snap-mandatory scrollbar-hide">
+            {steps.map((step) => {
+              const Icon = step.icon;
+              return (
+                <Card
+                  key={step.number}
+                  className="min-w-[240px] max-w-[85vw] snap-center relative overflow-hidden border-border bg-bg-card transition-shadow hover:shadow-md md:min-w-0 md:max-w-none"
+                >
+                  <CardContent className="p-6">
+                    {/* Step Number Badge */}
+                    <div className="mb-4 flex items-center justify-between">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-lg font-bold text-primary">
+                        {step.number}
+                      </div>
+                      <Icon className="h-8 w-8 text-primary/40" />
                     </div>
-                    <Icon className="h-8 w-8 text-primary/40" />
-                  </div>
 
-                  {/* Content */}
-                  <h3 className="mb-3 text-xl font-semibold text-text-primary">
-                    {step.title}
-                  </h3>
-                  <p className="text-text-secondary leading-relaxed">
-                    {step.description}
-                  </p>
-                </CardContent>
-              </Card>
-            );
-          })}
+                    {/* Content */}
+                    <h3 className="mb-3 text-xl font-semibold text-text-primary">
+                      {step.title}
+                    </h3>
+                    <p className="text-text-secondary leading-relaxed">
+                      {step.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+          {/* Scroll hint gradient on mobile */}
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-bg-primary to-transparent md:hidden" />
         </div>
       </div>
     </section>
