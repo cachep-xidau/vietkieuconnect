@@ -8,38 +8,56 @@ export function CostComparisonSection() {
   const treatments = [
     {
       name: t("implant"),
-      usPrice: "$3,000-5,000",
-      vnPrice: "$800-1,500",
-      savings: "~70%",
+      usPrice: "$3,000–6,000",
+      vnPrice: "$700–1,200",
+      savings: "~75%",
+    },
+    {
+      name: t("veneer"),
+      usPrice: "$925–2,500",
+      vnPrice: "$235–470",
+      savings: "~75%",
     },
     {
       name: t("crown"),
-      usPrice: "$1,000-3,000",
-      vnPrice: "$200-500",
+      usPrice: "$1,500–3,000",
+      vnPrice: "$160–550",
       savings: "~80%",
+    },
+    {
+      name: t("braces"),
+      usPrice: "$3,000–7,000",
+      vnPrice: "$1,100–2,350",
+      savings: "~65%",
     },
     {
       name: t("rootCanal"),
-      usPrice: "$700-1,500",
-      vnPrice: "$100-300",
-      savings: "~80%",
+      usPrice: "$700–1,500",
+      vnPrice: "$40–120",
+      savings: "~90%",
     },
     {
       name: t("whitening"),
-      usPrice: "$500-1,000",
-      vnPrice: "$100-200",
+      usPrice: "$500–1,000",
+      vnPrice: "$80–200",
       savings: "~80%",
     },
     {
+      name: t("filling"),
+      usPrice: "$150–400",
+      vnPrice: "$8–40",
+      savings: "~85%",
+    },
+    {
       name: t("dentures"),
-      usPrice: "$1,500-3,000",
-      vnPrice: "$300-600",
+      usPrice: "$1,500–3,000",
+      vnPrice: "$300–600",
       savings: "~80%",
     },
   ];
 
   return (
-    <section className="bg-bg-primary py-16 md:py-24">
+    <section id="costComparison" className="bg-bg-primary py-16 md:py-24">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="mb-12 text-center">
@@ -125,9 +143,12 @@ export function CostComparisonSection() {
           ))}
         </div>
 
-        {/* Disclaimer */}
+        {/* Source + Disclaimer */}
         <p className="mt-6 text-center text-sm text-text-secondary">
           {t("disclaimer")}
+        </p>
+        <p className="mt-2 text-center text-xs text-text-secondary/60">
+          {t("source")}
         </p>
       </div>
     </section>

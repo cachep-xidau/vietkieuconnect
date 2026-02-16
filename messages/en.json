@@ -107,11 +107,15 @@
       "vnPrice": "Vietnam Price",
       "savings": "You Save",
       "implant": "Dental Implant",
+      "veneer": "Porcelain Veneer",
       "crown": "Porcelain Crown",
+      "braces": "Metal Braces (2 arches)",
       "rootCanal": "Root Canal",
       "whitening": "Teeth Whitening",
+      "filling": "Composite Filling",
       "dentures": "Full Dentures",
-      "disclaimer": "* Prices are estimates. Actual costs vary by clinic and treatment complexity."
+      "disclaimer": "* Prices are estimates. Actual costs vary by clinic and treatment complexity.",
+      "source": "Sources: Aspen Dental, GoodRx, CareCredit (US) · Nha Khoa Kim, BookingCare, iDent (VN) — Updated Feb 2026"
     },
     "testimonials": {
       "title": "What Việt Kiều Say",

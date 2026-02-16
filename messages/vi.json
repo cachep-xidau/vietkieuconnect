@@ -107,11 +107,15 @@
       "vnPrice": "Giá Việt Nam",
       "savings": "Tiết Kiệm",
       "implant": "Cấy Ghép Implant",
-      "crown": "Bọc Răng Sứ",
+      "veneer": "Dán Sứ Veneer",
+      "crown": "Bọc Răng Sứ Toàn Sứ",
+      "braces": "Niềng Răng Kim Loại (2 hàm)",
       "rootCanal": "Điều Trị Tủy",
       "whitening": "Tẩy Trắng Răng",
+      "filling": "Trám Răng Composite",
       "dentures": "Hàm Răng Giả",
-      "disclaimer": "* Giá ước tính. Chi phí thực tế tùy thuộc vào phòng khám và độ phức tạp của điều trị."
+      "disclaimer": "* Giá ước tính. Chi phí thực tế tùy thuộc vào phòng khám và độ phức tạp của điều trị.",
+      "source": "Nguồn: Aspen Dental, GoodRx, CareCredit (Mỹ) · Nha Khoa Kim, BookingCare, iDent (VN) — Cập nhật T2/2026"
     },
     "testimonials": {
       "title": "Việt Kiều Nói Gì",
