@@ -6,6 +6,7 @@ import { FeaturedClinicsSection } from "@/components/landing/featured-clinics-se
 import { CostComparisonSection } from "@/components/landing/cost-comparison-section";
 import { TestimonialsSection } from "@/components/landing/testimonials-section";
 import { FinalCtaSection } from "@/components/landing/final-cta-section";
+import { HashScrollFix } from "@/components/layout/hash-scroll-fix";
 
 export default async function HomePage() {
   const supabase = await createClient();
@@ -19,6 +20,7 @@ export default async function HomePage() {
 
   return (
     <main className="min-h-screen">
+      <HashScrollFix />
       <HeroSection />
       <TrustBadgesSection />
       <HowItWorksSection />

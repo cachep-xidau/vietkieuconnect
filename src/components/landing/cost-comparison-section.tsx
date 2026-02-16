@@ -57,7 +57,7 @@ export function CostComparisonSection() {
   ];
 
   return (
-    <section id="costComparison" className="bg-bg-primary py-16 md:py-24">
+    <section id="costComparison" className="scroll-mt-20 bg-bg-primary py-16 md:py-24">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="mb-12 text-center">
