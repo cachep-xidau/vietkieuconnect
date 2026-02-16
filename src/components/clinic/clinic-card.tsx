@@ -6,9 +6,19 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { RatingStars } from "./rating-stars";
 import { LicenseBadge } from "./license-badge";
-import { ShieldCheck, MapPin, Phone, ExternalLink } from "lucide-react";
+import {
+  ShieldCheck,
+  MapPin,
+  Phone,
+  ExternalLink,
+  CircleDot,
+  Sparkles,
+  Smile,
+  Stethoscope,
+} from "lucide-react";
 import { ClinicTable } from "@/types/database-clinic-tables";
 import { useTranslations } from "next-intl";
+import { getServiceCategories, type ServiceCategory } from "@/lib/service-categories";
 
 interface ClinicCardProps {
   clinic: ClinicTable["Row"];
@@ -32,6 +42,13 @@ function normalizeCityName(city: string, locale: string): string {
   return city;
 }
 
+const CATEGORY_ICONS: Record<ServiceCategory, React.ElementType> = {
+  implant: CircleDot,
+  veneer: Sparkles,
+  braces: Smile,
+  general: Stethoscope,
+};
+
 export function ClinicCard({ clinic, locale }: ClinicCardProps) {
   const t = useTranslations("clinic");
   const mainPhoto = clinic.photos[0];
@@ -39,6 +56,7 @@ export function ClinicCard({ clinic, locale }: ClinicCardProps) {
   const services = Array.isArray(clinic.services)
     ? (clinic.services as string[])
     : [];
+  const categories = getServiceCategories(services);
 
   return (
     <Link href={`/clinics/${clinic.slug}`}>
@@ -99,20 +117,19 @@ export function ClinicCard({ clinic, locale }: ClinicCardProps) {
           />
 
           <div className="flex flex-wrap gap-1.5">
-            {services.slice(0, 3).map((service, idx) => (
-              <Badge
-                key={idx}
-                variant="secondary"
-                className="text-xs bg-bg-subtle"
-              >
-                {service}
-              </Badge>
-            ))}
-            {services.length > 3 && (
-              <Badge variant="secondary" className="text-xs bg-bg-subtle">
-                +{services.length - 3}
-              </Badge>
-            )}
+            {categories.map((cat) => {
+              const Icon = CATEGORY_ICONS[cat];
+              return (
+                <Badge
+                  key={cat}
+                  variant="secondary"
+                  className="text-xs bg-primary/5 text-primary border border-primary/20 gap-1"
+                >
+                  <Icon className="h-3 w-3" />
+                  {t(`filter.${cat}`)}
+                </Badge>
+              );
+            })}
           </div>
 
           {/* Action Buttons — Hotline + Đặt lịch */}

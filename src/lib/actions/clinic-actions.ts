@@ -25,9 +25,8 @@ export async function getClinics(
       query = query.eq("city", filters.city);
     }
 
-    if (filters?.treatmentTypes && filters.treatmentTypes.length > 0) {
-      query = query.contains("services", filters.treatmentTypes);
-    }
+    // Category filtering is done client-side after fetch
+    // because DB stores specific service names, not categories
 
     if (filters?.sortBy === "rating") {
       query = query.order("rating", { ascending: false });
@@ -49,9 +48,22 @@ export async function getClinics(
       };
     }
 
+    let clinics = data || [];
+
+    // Filter by treatment category using keyword matching
+    if (filters?.treatmentTypes && filters.treatmentTypes.length > 0) {
+      const { matchesCategories } = await import("@/lib/service-categories");
+      clinics = clinics.filter((c: ClinicTable["Row"]) => {
+        const services = Array.isArray(c.services)
+          ? (c.services as string[])
+          : [];
+        return matchesCategories(services, filters.treatmentTypes as any);
+      });
+    }
+
     return {
       success: true,
-      data: data || [],
+      data: clinics,
     };
   } catch (error) {
     return {
