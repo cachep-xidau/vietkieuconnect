@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
+import { verifyAdminRole } from "@/lib/auth/admin-auth-helper";
 import { ActionResult } from "@/types/actions";
 import {
   ConsultationRequestTable,
@@ -14,15 +15,6 @@ type ConsultationWithRelations = ConsultationRequestTable["Row"] & {
   images: ConsultationImageTable["Row"][];
   image_count?: number;
 };
-
-async function verifyAdminAccess(supabase: any, userId: string): Promise<boolean> {
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("role")
-    .eq("id", userId)
-    .single();
-  return profile?.role === "admin";
-}
 
 export async function getAllConsultationsAdmin(
   filters?: {
@@ -39,7 +31,7 @@ export async function getAllConsultationsAdmin(
       return { success: false, error: "Authentication required", code: "UNAUTHENTICATED" };
     }
 
-    if (!(await verifyAdminAccess(supabase, user.id))) {
+    if (!(await verifyAdminRole(supabase, user.id))) {
       return { success: false, error: "Unauthorized", code: "FORBIDDEN" };
     }
 
@@ -116,7 +108,7 @@ export async function getConsultationByIdAdmin(
       return { success: false, error: "Authentication required", code: "UNAUTHENTICATED" };
     }
 
-    if (!(await verifyAdminAccess(supabase, user.id))) {
+    if (!(await verifyAdminRole(supabase, user.id))) {
       return { success: false, error: "Unauthorized", code: "FORBIDDEN" };
     }
 
@@ -176,7 +168,7 @@ export async function createTreatmentPlan(
       return { success: false, error: "Authentication required", code: "UNAUTHENTICATED" };
     }
 
-    if (!(await verifyAdminAccess(supabase, user.id))) {
+    if (!(await verifyAdminRole(supabase, user.id))) {
       return { success: false, error: "Unauthorized", code: "FORBIDDEN" };
     }
 

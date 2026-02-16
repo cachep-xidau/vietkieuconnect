@@ -10,8 +10,19 @@ export const consultationRequestSchema = z.object({
   clinicId: z.string().uuid().optional(),
 });
 
+const fileSchema = z.custom<File>(
+  (val) => val instanceof File,
+  { message: "A valid file is required" }
+).refine(
+  (file) => ["image/jpeg", "image/png", "image/webp"].includes(file.type),
+  { message: "Only JPEG, PNG, and WebP images are allowed" }
+).refine(
+  (file) => file.size <= 5 * 1024 * 1024,
+  { message: "File size must be under 5MB" }
+);
+
 export const imageUploadSchema = z.object({
-  file: z.any(), // File object validated on client
+  file: fileSchema,
   consultationId: z.string().uuid(),
   imageType: z.enum(["xray", "photo", "other"]).default("photo"),
 });

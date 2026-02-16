@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
+import { verifyAdminRole } from "@/lib/auth/admin-auth-helper";
 import { ActionResult } from "@/types/actions";
 import { BookingTable, TreatmentPlanTable } from "@/types/database-booking-tables";
 import { ClinicTable } from "@/types/database-clinic-tables";
@@ -10,15 +11,6 @@ type BookingWithRelations = BookingTable["Row"] & {
   clinic: Pick<ClinicTable["Row"], "id" | "name" | "city"> | null;
   treatment_plan: TreatmentPlanTable["Row"] | null;
 };
-
-async function verifyAdminAccess(supabase: any, userId: string): Promise<boolean> {
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("role")
-    .eq("id", userId)
-    .single();
-  return profile?.role === "admin";
-}
 
 export async function getAllBookingsAdmin(
   filters?: {
@@ -35,7 +27,7 @@ export async function getAllBookingsAdmin(
       return { success: false, error: "Authentication required", code: "UNAUTHENTICATED" };
     }
 
-    if (!(await verifyAdminAccess(supabase, user.id))) {
+    if (!(await verifyAdminRole(supabase, user.id))) {
       return { success: false, error: "Unauthorized", code: "FORBIDDEN" };
     }
 
@@ -96,7 +88,7 @@ export async function getBookingByIdAdmin(
       return { success: false, error: "Authentication required", code: "UNAUTHENTICATED" };
     }
 
-    if (!(await verifyAdminAccess(supabase, user.id))) {
+    if (!(await verifyAdminRole(supabase, user.id))) {
       return { success: false, error: "Unauthorized", code: "FORBIDDEN" };
     }
 
@@ -154,7 +146,7 @@ export async function updateBookingStatus(
       return { success: false, error: "Authentication required", code: "UNAUTHENTICATED" };
     }
 
-    if (!(await verifyAdminAccess(supabase, user.id))) {
+    if (!(await verifyAdminRole(supabase, user.id))) {
       return { success: false, error: "Unauthorized", code: "FORBIDDEN" };
     }
 

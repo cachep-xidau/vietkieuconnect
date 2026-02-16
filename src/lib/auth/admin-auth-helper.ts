@@ -39,3 +39,19 @@ export async function getCurrentUser(): Promise<string | null> {
   const { data: { user } } = await supabase.auth.getUser();
   return user?.id || null;
 }
+
+/**
+ * Verify if a user has admin role (non-redirecting version).
+ * Use in server actions that return ActionResult instead of redirecting.
+ * @param supabase - Supabase client instance
+ * @param userId - User ID to check
+ * @returns true if admin, false otherwise
+ */
+export async function verifyAdminRole(supabase: any, userId: string): Promise<boolean> {
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("id", userId)
+    .single();
+  return profile?.role === "admin";
+}

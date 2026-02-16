@@ -150,6 +150,22 @@ export async function uploadConsultationImage(
       return { success: false, error: "Missing required fields" };
     }
 
+    // M1 fix: Validate file type and size
+    const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
+    const MAX_SIZE = 5 * 1024 * 1024; // 5MB
+    const ALLOWED_EXTS = ["jpg", "jpeg", "png", "webp"];
+
+    if (!ALLOWED_TYPES.includes(file.type)) {
+      return { success: false, error: "Only JPEG, PNG, and WebP images are allowed" };
+    }
+    if (file.size > MAX_SIZE) {
+      return { success: false, error: "File size must be under 5MB" };
+    }
+    const ext = file.name.split(".").pop()?.toLowerCase();
+    if (!ext || !ALLOWED_EXTS.includes(ext)) {
+      return { success: false, error: "Invalid file extension" };
+    }
+
     // Verify consultation belongs to user
     const { data: consultation } = await (supabase
       .from("consultation_requests")
