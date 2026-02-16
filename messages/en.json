@@ -376,6 +376,7 @@
   },
   "auth": {
     "loginTitle": "Sign In",
+    "loginSubtitle": "Enter your email and password to access your account",
     "registerTitle": "Create Account",
     "email": "Email",
     "password": "Password",

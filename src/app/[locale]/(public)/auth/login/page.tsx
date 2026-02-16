@@ -82,7 +82,7 @@ export default function LoginPage() {
       <CardHeader>
         <CardTitle>{t("loginTitle")}</CardTitle>
         <CardDescription>
-          Enter your email and password to access your account
+          {t("loginSubtitle")}
         </CardDescription>
       </CardHeader>
       <CardContent>

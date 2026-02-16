@@ -380,6 +380,7 @@
   },
   "auth": {
     "loginTitle": "Đăng Nhập",
+    "loginSubtitle": "Nhập email và mật khẩu để truy cập tài khoản của bạn",
     "registerTitle": "Tạo Tài Khoản",
     "email": "Email",
     "password": "Mật khẩu",

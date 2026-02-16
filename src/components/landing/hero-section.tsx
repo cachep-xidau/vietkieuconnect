@@ -68,7 +68,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative min-h-[600px] md:min-h-[650px] flex items-center justify-center overflow-hidden"
+      className="relative min-h-[480px] md:min-h-[650px] flex items-center justify-center overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -95,7 +95,7 @@ export function HeroSection() {
       </AnimatePresence>
 
       {/* Content */}
-      <div className="container relative z-10 mx-auto px-4 py-16 md:py-24">
+      <div className="container relative z-10 mx-auto px-4 py-10 md:py-24">
         <div className="mx-auto max-w-4xl text-center">
           {/* Animated Text */}
           <AnimatePresence mode="wait">
@@ -106,15 +106,15 @@ export function HeroSection() {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <h1 className="mb-6 whitespace-pre-line text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl drop-shadow-md">
+              <h1 className="mb-4 md:mb-6 whitespace-pre-line text-3xl font-bold leading-tight text-white md:text-5xl lg:text-6xl drop-shadow-md">
                 {t(`slide${slideNum}Title`)}
               </h1>
-              <p className="mb-8 text-lg text-teal-50/90 md:text-xl font-medium max-w-2xl mx-auto">
+              <p className="mb-6 md:mb-8 text-base md:text-xl text-teal-50/90 font-medium max-w-2xl mx-auto">
                 {t(`slide${slideNum}Subtitle`)}
               </p>
 
               {/* 3 CTA Buttons */}
-              <div className="mb-16 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+              <div className="mb-8 md:mb-16 flex flex-col items-center justify-center gap-2 sm:flex-row sm:gap-4">
                 <Button asChild size="lg" className="w-full sm:w-auto bg-white text-teal-900 hover:bg-teal-50 border-none font-semibold shadow-lg">
                   <Link href={slide.links[0]}>
                     {t(`slide${slideNum}Cta1`)}
@@ -169,14 +169,14 @@ export function HeroSection() {
       {/* Navigation Arrows */}
       <button
         onClick={prev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-colors"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-colors hidden md:flex"
         aria-label="Previous slide"
       >
         <ChevronLeft className="h-5 w-5" />
       </button>
       <button
         onClick={next}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-colors"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-colors hidden md:flex"
         aria-label="Next slide"
       >
         <ChevronRight className="h-5 w-5" />
@@ -189,8 +189,8 @@ export function HeroSection() {
             key={index}
             onClick={() => goTo(index)}
             className={`h-2 rounded-full transition-all duration-300 ${index === current
-                ? "w-8 bg-white"
-                : "w-2 bg-white/40 hover:bg-white/60"
+              ? "w-8 bg-white"
+              : "w-2 bg-white/40 hover:bg-white/60"
               }`}
             aria-label={`Go to slide ${index + 1}`}
           />

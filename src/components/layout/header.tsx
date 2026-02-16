@@ -123,9 +123,9 @@ export function Header() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="border-t border-border bg-bg-card md:hidden">
+        <div className="fixed inset-0 top-16 z-40 bg-bg-card md:hidden overflow-y-auto">
           <nav className="container mx-auto flex flex-col px-4 py-4">
             {navLinks.map((link) => (
               <Link
@@ -142,13 +142,15 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
-            <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
-              <LanguageToggle />
+            <div className="mt-4 flex flex-col gap-4 border-t border-border pt-4">
+              <div className="flex items-center justify-between">
+                <LanguageToggle />
+              </div>
               {user ? (
                 <UserMenu user={user} />
               ) : (
-                <Button asChild size="sm">
-                  <Link href="/login">{tCommon("signIn")}</Link>
+                <Button asChild className="w-full">
+                  <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>{tCommon("signIn")}</Link>
                 </Button>
               )}
             </div>
